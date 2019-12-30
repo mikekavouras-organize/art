@@ -3,8 +3,8 @@ Rails.application.routes.draw do
 
   namespace :admin do
     root to: "welcome#index"
-    resources :users, only: [:new]
+    resources :sessions, only: [:new, :create]
 
-    post 'login', to: 'sessions#create'
+
   end
 end
