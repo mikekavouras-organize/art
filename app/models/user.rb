@@ -3,6 +3,10 @@ class User < ApplicationRecord
 
   WHITELISTED_USERNAMES = ["mikekavouras", "bennfos"].freeze
 
-  validates :username, inclusion: { in: WHITELISTED_USERNAMES,
-    message: "%{value} is not a valid username" }
+  validates :username,
+    inclusion: {
+      in: WHITELISTED_USERNAMES,
+      message: "%{value} is not a valid username" 
+    },
+    uniqueness: true
 end
