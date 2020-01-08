@@ -3,7 +3,7 @@ require 'test_helper'
 class UserTest < ActiveSupport::TestCase
   test "only allows whitelisted usernames" do
     User::WHITELISTED_USERNAMES.each do |username|
-      valid_user = build(:valid_user, username: username)
+      valid_user = build(:user, username: username)
       assert valid_user.valid?
     end
 
