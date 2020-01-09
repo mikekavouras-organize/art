@@ -1,5 +1,5 @@
 class WelcomeController < ApplicationController
     def index
-        @name = params[:name] || "person"
+        @categories = Category.all
     end
 end

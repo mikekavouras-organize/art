@@ -1,1 +1,5 @@
-<p><%= "hello #{@name}" %></p>
+<% @categories.each do |category| %>
+  <p>
+    <a href="<%= category_path(category) %>"><%= category.name %></a>
+  </p>
+<% end %>
