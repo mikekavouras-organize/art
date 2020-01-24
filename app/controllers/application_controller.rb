@@ -6,4 +6,10 @@ class ApplicationController < ActionController::Base
   def logged_in?
     !current_user.nil?
   end
+
+  def authenticate
+    unless logged_in?
+      redirect_to new_admin_session_path
+    end
+  end
 end
