@@ -1,4 +1,4 @@
-<%= form_with model: @piece, url: admin_category_pieces_path, method: :post do |form| %>
+<%= form_with model: @piece, url: admin_category_pieces_path, method: :post, multipart: true do |form| %>
   <div class="form-control">
     <%= form.label :title, "Title" %>
     <%= form.text_field :title %>
@@ -6,6 +6,10 @@
   <div class="form-control">
     <%= form.label :description, "Description" %>
     <%= form.text_area :description %>
+  </div>
+  <div class="form-control">
+    <%= form.label :assets, "Media" %>
+    <%= form.file_field :assets, multiple: true %>
   </div>
   <%= form.submit "Create piece" %>
 <% end %>

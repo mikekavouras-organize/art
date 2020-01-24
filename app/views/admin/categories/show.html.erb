@@ -1,6 +1,9 @@
 <% @pieces.each do |piece| %>
   <h2><%= link_to piece.title, admin_category_piece_path(category, piece) %></h2>
   <p><%= piece.description %></p>
+  <% piece.assets.each do |asset| %>
+    <small><%= link_to "image", url_for(asset) %></small>
+  <% end %>
 <% end %>
 
 <%= link_to "New piece", new_admin_category_piece_path(category) %>
