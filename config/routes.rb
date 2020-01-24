@@ -6,6 +6,8 @@ Rails.application.routes.draw do
   namespace :admin do
     root to: "welcome#index"
     resources :sessions, only: [:new, :create]
+    resources :categories, except: [:index], param: :name do
+      resources :pieces
+    end
   end
-
 end
