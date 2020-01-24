@@ -1,0 +1,7 @@
+<% @pieces.each do |piece| %>
+  <h2><%= link_to piece.title, admin_category_piece_path(category, piece) %></h2>
+  <p><%= piece.description %></p>
+<% end %>
+
+<%= link_to "New piece", new_admin_category_piece_path(category) %>
+
