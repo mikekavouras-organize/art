@@ -1,0 +1,12 @@
+<%= form_with model: @piece, url: admin_category_piece_path, method: "patch" do |form| %>
+  <div class="form-control">
+    <%= form.label :title, "Title" %>
+    <%= form.text_field :title %>
+  </div>
+  <div class="form-control">
+    <%= form.label :description, "Description" %>
+    <%= form.text_area :description %>
+  </div>
+  <%= form.submit "Update piece" %>
+<% end %>
+
