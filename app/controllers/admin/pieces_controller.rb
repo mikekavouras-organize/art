@@ -11,7 +11,7 @@ module Admin
     def create
       category.pieces.create!(piece_params)
       redirect_to admin_category_path(category)
-    rescue ActiveRecord::RecoredInvalid => e
+    rescue ActiveRecord::RecordInvalid => e
       flash[:error] = e.message
       redirect_to admin_category_path(category)
     end
@@ -23,7 +23,7 @@ module Admin
     def update
       piece.update!(piece_params)
       redirect_to admin_category_path(category)
-    rescue ActiveRecord::RecoredInvalid => e
+    rescue ActiveRecord::RecordInvalid => e
       flash[:error] = e.message
       redirect_to admin_category_path(category)
     end
@@ -40,7 +40,7 @@ module Admin
     end
 
     def piece_params
-      params.require(:piece).permit(:title, :description)
+      params.require(:piece).permit(:title, :description, assets: [])
     end
   end
 end
