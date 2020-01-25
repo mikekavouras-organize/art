@@ -1,7 +1,7 @@
 module Admin
   class CategoriesController < ApplicationController
     def show
-      @pieces = category.pieces
+      @pieces = category.pieces.with_attached_assets
     end
 
     private

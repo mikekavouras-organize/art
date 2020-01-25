@@ -1,11 +1,13 @@
-<%= form_with(url: admin_sessions_path, method: :post) do |form| %>
-  <dl class="form-group">
-    <dt><%= form.label :username %></dt>
-    <dd><%= form.text_field :username %></dd>
-  </dl>
-  <dl>
-    <dt><%= form.label :password %></dt>
-    <dd><%= form.password_field :password %></dd>
-  </dl>
-  <%= form.submit "sign in", class: "btn btn-primary" %>
-<% end %>
+<div class="col-4 mx-auto">
+  <%= form_with(url: admin_sessions_path, method: :post) do |form| %>
+    <dl class="form-group">
+      <dt><%= form.label :username %></dt>
+      <dd><%= form.text_field :username, class: "form-control" %></dd>
+    </dl>
+    <dl class="form-group">
+      <dt><%= form.label :password %></dt>
+      <dd><%= form.password_field :password, class: "form-control" %></dd>
+    </dl>
+    <%= form.submit "Sign in", class: "btn btn-primary" %>
+  <% end %>
+</div>

@@ -1,6 +1,7 @@
-welcome to admintown
-<% @categories.each do |category| %>
-  <p>
-    <a href="<%= admin_category_path(category) %>"><%= category.name %></a>
-  </p>
-<% end %>
+<div class="col-4 mt-4 mx-auto">
+  <% @categories.each do |category| %>
+    <p>
+      <a href="<%= admin_category_path(category) %>"><%= category.name %></a>
+    </p>
+  <% end %>
+</div>
