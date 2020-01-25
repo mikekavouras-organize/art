@@ -1,10 +1,8 @@
-<div class="col-4 mt-4 mx-auto">
-  <nav aria-label="Breadcrumb">
-    <ol>
-      <li class="breadcrumb-item"><%= link_to category.name.capitalize, admin_category_path(category) %></li>
-      <li class="breadcrumb-item" aria-current="page"><%= @piece.title %></li>
-    </ol>
-  </nav>
-  <hr>
-  <%= render partial: "admin/pieces/form", locals: { method: :patch, model: @piece } %>
-</div>
+<nav aria-label="Breadcrumb">
+  <ol>
+    <li class="breadcrumb-item"><%= link_to category.name.capitalize, admin_category_path(category) %></li>
+    <li class="breadcrumb-item" aria-current="page"><%= piece.title %></li>
+  </ol>
+</nav>
+<hr>
+<%= render partial: "admin/pieces/form", locals: { method: :patch, model: piece } %>

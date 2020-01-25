@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Art</title>
+    <title>Art - admin</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -11,7 +11,9 @@
 
   <body>
     <div class="container-lg clearfix">
-      <%= yield %>
+      <div class="col-6 mx-auto mt-4">
+        <%= yield %>
+      </div>
     </div>
   </body>
 </html>

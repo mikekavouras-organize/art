@@ -2,12 +2,11 @@ module Admin
   class PiecesController < ApplicationController
     layout "admin"
 
-    def show
-      @piece = Piece.find(params[:id])
-    end
-
     def new
-      @piece = Piece.new
+      render "admin/pieces/new", locals: {
+        piece: Piece.new,
+        category: category
+      }
     end
 
     def create
@@ -19,7 +18,10 @@ module Admin
     end
 
     def edit
-      @piece = Piece.find(params[:id])
+      render "admin/pieces/edit", locals: {
+        piece: piece,
+        category: category
+      }
     end
 
     def update
@@ -35,7 +37,6 @@ module Admin
     def category
       @category ||= Category.find_by(name: params[:category_name])
     end
-    helper_method :category
 
     def piece
       @piece ||= Piece.find(params[:id])

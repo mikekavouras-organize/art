@@ -1,6 +1,6 @@
 <%
   verb = method == :post ? "Create" : "Update"
-  url = method == :post ? new_admin_category_piece_path : admin_category_piece_path
+  url = method == :post ? admin_category_pieces_path : admin_category_piece_path
 %>
 <%= form_with model: model, url: url, method: method, multipart: true do |form| %>
   <dl class="form-group">
