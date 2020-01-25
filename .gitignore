@@ -8,6 +8,7 @@
 /.bundle
 .vscode
 .env
+/storage
 
 # Ignore all logfiles and tempfiles.
 /log/*
