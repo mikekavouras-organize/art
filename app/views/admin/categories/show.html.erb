@@ -7,7 +7,7 @@
   </nav>
   <hr>
   <%= link_to "New piece", new_admin_category_piece_path(category), class: "btn btn-primary mb-2" %>
-  <% @pieces.each do |piece| %>
+  <% category.pieces.each do |piece| %>
     <h2><%= link_to piece.title, edit_admin_category_piece_path(category, piece) %></h2>
     <p><%= piece.description %></p>
     <div class="d-flex">
