@@ -1,0 +1,26 @@
+<%
+  verb = method == :post ? "Create" : "Update"
+  url = method == :post ? new_admin_category_piece_path : admin_category_piece_path
+%>
+<%= form_with model: model, url: url, method: method, multipart: true do |form| %>
+  <dl class="form-group">
+    <dt><%= form.label :title, "Title" %></dt>
+    <dl><%= form.text_field :title, class: "form-control" %></dl>
+  </dl>
+  <dl class="form-group">
+    <dt><%= form.label :description, "Description" %></dt>
+    <dd><%= form.text_area :description, class: "form-control" %></dd>
+  </dl>
+  <dl class="form-group">
+    <dt><%= form.label :assets, "Media" %></dt>
+    <dd><%= form.file_field :assets, multiple: true %></dd>
+  </dl>
+  <div class="d-flex" style="width: calc(100% + 20px); margin-left: -10px;">
+    <% model.assets.each do |asset| %>
+      <div style="flex: 3; padding: 10px;">
+        <%= image_tag rails_blob_path(asset), style: "width: 100%" %>
+      </div>
+    <% end %>
+  </div>
+  <%= form.submit "#{verb} art", class: "btn btn-primary" %>
+<% end %>
