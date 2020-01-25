@@ -1,11 +1,11 @@
 <%= form_with(url: admin_sessions_path, method: :post) do |form| %>
-  <div>
-    <%= form.label :username %>
-    <%= form.text_field :username %>
-  </div>
-  <div>
-    <%= form.label :password %>
-    <%= form.password_field :password %>
-  </div>
-  <%= form.submit "sign in" %>
+  <dl class="form-group">
+    <dt><%= form.label :username %></dt>
+    <dd><%= form.text_field :username %></dd>
+  </dl>
+  <dl>
+    <dt><%= form.label :password %></dt>
+    <dd><%= form.password_field :password %></dd>
+  </dl>
+  <%= form.submit "sign in", class: "btn btn-primary" %>
 <% end %>
