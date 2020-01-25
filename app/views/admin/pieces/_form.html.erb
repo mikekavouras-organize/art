@@ -17,9 +17,7 @@
   </dl>
   <div class="d-flex" style="width: calc(100% + 20px); margin-left: -10px;">
     <% model.assets.each do |asset| %>
-      <div style="flex: 3; padding: 10px;">
-        <%= image_tag rails_blob_path(asset), style: "width: 100%" %>
-      </div>
+      <%= form.hidden_field :assets, multiple: true, value: asset.signed_id %>
     <% end %>
   </div>
   <%= form.submit "#{verb} art", class: "btn btn-primary" %>

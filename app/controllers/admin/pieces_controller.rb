@@ -25,6 +25,7 @@ module Admin
     end
 
     def update
+      piece.assets.attach(piece_params[:assets]) unless piece_params[:assets].nil?
       piece.update!(piece_params)
       redirect_to admin_category_path(category)
     rescue ActiveRecord::RecordInvalid => e
