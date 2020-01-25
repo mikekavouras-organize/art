@@ -1,5 +1,7 @@
 module Admin
   class PiecesController < ApplicationController
+    layout "admin"
+
     def show
       @piece = Piece.find(params[:id])
     end
