@@ -45,7 +45,7 @@ module Admin
     end
 
     def piece
-      @piece ||= Piece.find(params[:id])
+      @piece ||= Piece.with_attached_assets.find(params[:id])
     end
 
     def piece_params
