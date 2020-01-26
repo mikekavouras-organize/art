@@ -21,6 +21,17 @@ module Admin
       redirect_to admin_category_path(category)
     end
 
+    def edit
+      render "admin/categories/edit", locals: {
+        category: category
+      }
+    end
+
+    def update
+      category.update(category_params)
+      redirect_to admin_category_path(category)
+    end
+
     private
 
     def category

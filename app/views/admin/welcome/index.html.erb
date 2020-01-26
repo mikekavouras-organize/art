@@ -1,6 +1,6 @@
+<%= link_to "New category", new_admin_category_path(), class: "btn btn-primary mb-2" %>
 <% @categories.each do |category| %>
   <p>
     <a href="<%= admin_category_path(category) %>"><%= category.name %></a>
   </p>
 <% end %>
-<%= link_to "New category", new_admin_category_path(), class: "btn btn-primary mb-2" %>

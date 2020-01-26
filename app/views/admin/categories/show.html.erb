@@ -2,6 +2,7 @@
   <ol>
     <li class="breadcrumb-item"><%= link_to "Categories", admin_root_path %></li>
     <li class="breadcrumb-item" aria-current="page"><%= category.name %></li>
+    <%= link_to "edit", edit_admin_category_path, class:"float-right" %>
   </ol>
 </nav>
 <hr>
