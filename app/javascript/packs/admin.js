@@ -52,5 +52,13 @@ observe('.js-sortable', {
       items: '.js-sortable-item',
       handle: '.handle'
     })
+
+    sortObject[0].addEventListener('sortupdate', function(event) {
+      const items = event.target.querySelectorAll('.js-sortable-item')
+      const ids = Array.from(items).map(item => item.getAttribute('data-id'))
+      const input = document.querySelector('.js-ordered-media-ids')
+      input.value = ids.join(',')
+      sendForm(input.form)
+    })
   }
 })

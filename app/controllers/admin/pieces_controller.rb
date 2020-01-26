@@ -25,7 +25,10 @@ module Admin
     end
 
     def update
-      piece.update!(piece_params)
+      ordered_ids = piece_params.delete("ordered_ids").split(",")
+      piece.assign_attributes(piece_params)
+      piece.update_media_positions(ordered_ids)
+      piece.save!
       if request.xhr?
         render partial: "admin/pieces/media", locals: {
           model: piece
@@ -49,7 +52,7 @@ module Admin
     end
 
     def piece_params
-      params.require(:piece).permit(:title, :description, assets: [])
+      @piece_params ||= params.require(:piece).permit(:title, :description, :ordered_ids, assets: [])
     end
   end
 end
