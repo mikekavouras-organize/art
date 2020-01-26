@@ -3239,6 +3239,11 @@ html-entities@^1.2.1:
   resolved "https://registry.yarnpkg.com/html-entities/-/html-entities-1.2.1.tgz#0df29351f0721163515dfb9e5543e5f6eed5162f"
   integrity sha1-DfKTUfByEWNRXfueVUPl9u7VFi8=
 
+html5sortable@^0.9.17:
+  version "0.9.17"
+  resolved "https://registry.yarnpkg.com/html5sortable/-/html5sortable-0.9.17.tgz#b9200fed9c2b0557115742e2987beb43ddefadb0"
+  integrity sha512-zCr78fJY/EI0qjBZfhpv+V6twTd2+xf32TKsas9bUX5N9uEg0lDl+OCyhr38ebVRzkXjQ+O5xQFN5XCOHkUbTQ==
+
 http-deceiver@^1.2.7:
   version "1.2.7"
   resolved "https://registry.yarnpkg.com/http-deceiver/-/http-deceiver-1.2.7.tgz#fa7168944ab9a519d337cb0bec7284dc3e723d87"
@@ -6151,6 +6156,18 @@ select-hose@^2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/select-hose/-/select-hose-2.0.0.tgz#625d8658f865af43ec962bfc376a37359a4994ca"
   integrity sha1-Yl2GWPhlr0Psliv8N2o3NZpJlMo=
+
+selector-observer@^2.1.6:
+  version "2.1.6"
+  resolved "https://registry.yarnpkg.com/selector-observer/-/selector-observer-2.1.6.tgz#8d54e897f543315b2e7eff296ebb5142c693a130"
+  integrity sha512-/I0XLOlDbzk9tnZUqNos/2cshOxTNk1QhoXtJRR8OZ4JjVfXq6JUjqo4icPDQ8fzNr2uQ32mfOzJ6sXPao/6MA==
+  dependencies:
+    selector-set "^1.1"
+
+selector-set@^1.1:
+  version "1.1.5"
+  resolved "https://registry.yarnpkg.com/selector-set/-/selector-set-1.1.5.tgz#60c135aea482b6f46a2d95ad72058927690a8634"
+  integrity sha512-6SQw6yMew5iOZ8/cDHDEnJWRM4ot2mxP6szZyF5ptrBogw4AcS4EXRj/8BUfgAMwVfdL84qpModlBMOl2NVrsQ==
 
 selfsigned@^1.10.7:
   version "1.10.7"

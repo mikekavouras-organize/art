@@ -129,6 +129,11 @@ GEM
     nio4r (2.5.2)
     nokogiri (1.10.7)
       mini_portile2 (~> 2.4.0)
+    octicons (9.3.1)
+      nokogiri (>= 1.6.3.1)
+    octicons_helper (9.3.1)
+      octicons (= 9.3.1)
+      rails
     pg (1.2.0)
     public_suffix (4.0.2)
     puma (4.3.1)
@@ -235,6 +240,7 @@ DEPENDENCIES
   image_processing (~> 1.2)
   jbuilder (~> 2.7)
   listen (>= 3.0.5, < 3.2)
+  octicons_helper
   pg (>= 0.18, < 2.0)
   puma (~> 4.1)
   rails (~> 6.0.1)
