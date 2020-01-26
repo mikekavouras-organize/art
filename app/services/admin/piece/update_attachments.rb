@@ -28,7 +28,7 @@ module Admin
         else
           update_attachments
         end
-        new_attachments? ? piece.save! : piece.touch
+        piece.save!
       end
 
       private
@@ -44,9 +44,12 @@ module Admin
       end
 
       def update_attachments
-        preferred_order.each_with_index do |id, index|
-          asset = assets.find { |asset| asset.id == id.to_i }
-          asset.position = index
+        ActiveStorage::Attachment.transaction do
+          preferred_order.each_with_index do |id, index|
+            asset = assets.find { |asset| asset.id == id.to_i }
+            asset.position = index
+            asset.save
+          end
         end
       end
 
