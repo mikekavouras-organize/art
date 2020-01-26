@@ -3,14 +3,27 @@
 // a relevant structure within app/javascript and only use these pack files to reference
 // that code so it'll be compiled.
 
-require("@rails/ujs").start()
-require("@rails/activestorage").start()
-require("channels")
+import {observe} from 'selector-observer'
 
+observe('.js-file-input', {
+  add(input) {
+    input.addEventListener('change', async event => {
+      const formData = new FormData(input.form)
+      // const [file] = event.target.files
+      const method = input.form.querySelector('[name=_method]').value
+      const response = await fetch(input.form.action, {
+        method: method.toUpperCase(),
+        headers: { "X-Requested-With": "XMLHttpRequest" },
+        body: formData
+      })
+      const html = await response.text()
 
-// Uncomment to copy all static images under ../images to the output folder and reference
-// them with the image_pack_tag helper in views (e.g <%= image_pack_tag 'rails.png' %>)
-// or the `imagePath` JavaScript helper below.
-//
-// const images = require.context('../images', true)
-// const imagePath = (name) => images(name, true)
+      const div = document.createElement('div')
+      div.classList.add('js-media-form')
+      div.innerHTML = html.trim()
+      document.querySelector('.js-media-form').replaceWith(div)
+
+      input.form.reset()
+    })
+  }
+})
