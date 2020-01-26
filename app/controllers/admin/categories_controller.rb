@@ -10,6 +10,12 @@ module Admin
       }
     end
 
+    def new
+      render "admin/categories/new", locals: {
+        category: Category.new
+      }
+    end
+
     private
 
     def category

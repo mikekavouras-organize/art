@@ -1,0 +1,17 @@
+<%
+  verb = method == :post ? "Create" : "Update"
+  path = method == :post ? admin_categories_path : admin_category_path
+%>
+<%= form_with model: model, url: path, method: method, multipart: true do |form| %>
+  <dl class="form-group">
+    <dt><%= form.label :name, "Name" %></dt>
+    <dl><%= form.text_field :name, class: "form-control" %></dl>
+  </dl>
+  <%= form.submit "#{verb} category", class: "btn btn-primary mt-3" %>
+<% end %>
+
+<% if method == :patch %>
+  <div class="js-media-form">
+    <%= render partial: "admin/pieces/media", locals: { model: model } %>
+  </div>
+<% end %>

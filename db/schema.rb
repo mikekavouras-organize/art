@@ -36,16 +36,6 @@ ActiveRecord::Schema.define(version: 2020_01_24_032517) do
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
   end
 
-  create_table "assets", force: :cascade do |t|
-    t.integer "piece_id"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.string "asset_file_name"
-    t.string "asset_content_type"
-    t.bigint "asset_file_size"
-    t.datetime "asset_updated_at"
-  end
-
   create_table "categories", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", precision: 6, null: false
