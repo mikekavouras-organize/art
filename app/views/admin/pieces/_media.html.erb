@@ -21,6 +21,7 @@
     <% end %>
   </div>
   <%= form.file_field :assets, multiple: true, class: "file-input js-file-input" %>
+  <%= form.hidden_field :media_positions, value: model.media_positions.join(","), class: "js-media-positions" %>
   <% model.assets.each do |asset| %>
     <%= form.hidden_field :assets, multiple: true, value: asset.signed_id, id: nil %>
   <% end %>

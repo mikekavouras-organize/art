@@ -25,7 +25,8 @@ module Admin
     end
 
     def update
-      piece.update!(piece_params)
+      piece.assign_attributes(piece_params)
+      piece.save!
       if request.xhr?
         render partial: "admin/pieces/media", locals: {
           model: piece
@@ -49,7 +50,7 @@ module Admin
     end
 
     def piece_params
-      params.require(:piece).permit(:title, :description, assets: [])
+      params.require(:piece).permit(:title, :description, :media_positions, assets: [])
     end
   end
 end
