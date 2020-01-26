@@ -1,0 +1,7 @@
+<nav aria-label="Breadcrumb">
+  <ol>
+    <li class="breadcrumb-item"><%= link_to "Categories", admin_root_path %></li>
+  </ol>
+</nav>
+<hr>
+<%= render partial: "admin/categories/form", locals: { method: :post, model: category } %>
