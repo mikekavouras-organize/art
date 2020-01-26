@@ -10,11 +10,26 @@ module Admin
       }
     end
 
+    def new
+      render "admin/categories/new", locals: {
+        category: Category.new
+      }
+    end
+
+    def create
+      Category.create(category_params)
+      redirect_to admin_category_path(category)
+    end
+
     private
 
     def category
       @category ||= Category.includes(pieces: { assets_attachments: :blob })
         .find_by(name: params[:name])
+    end
+
+    def category_params
+      params.require(:category).permit(:name)
     end
   end
 end
