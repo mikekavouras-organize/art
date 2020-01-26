@@ -18,7 +18,7 @@ module Admin
 
     def create
       Category.create(category_params)
-      redirect_to admin_category_path(category)
+      redirect_to admin_root_path
     end
 
     def edit
@@ -32,6 +32,10 @@ module Admin
       redirect_to admin_category_path(category)
     end
 
+    def destroy
+      category.destroy
+      redirect_to admin_root_path
+    end
     private
 
     def category
