@@ -29,6 +29,7 @@ jobs:
     - name: Build and test with Rake
       run: |
         sudo apt-get install libpq-dev
+        pg_ctl -D /usr/local/var/postgres start
         gem install bundler
         bundle install --jobs 4 --retry 3
         bundle exec rake
