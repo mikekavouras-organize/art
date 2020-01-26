@@ -5,7 +5,7 @@
   </div>
   <div class="clearfix"></div>
   <div class="js-sortable sortable">
-    <% model.assets.order("position ASC").each do |asset| %>
+    <% assets.each do |asset| %>
       <div class="clearfix p-1 border border-gray mb-2 js-sortable-item" data-id="<%= asset.id %>" style="display:flex;">
         <div class="mr-3">
           <%= image_tag rails_blob_url(asset), style: "width: 100px; display: block;" %>
@@ -22,7 +22,7 @@
   </div>
   <%= form.file_field :assets, multiple: true, class: "file-input js-file-input" %>
   <%= form.hidden_field :ordered_ids, class: "js-ordered-media-ids" %>
-  <% model.assets.each do |asset| %>
+  <% assets.each do |asset| %>
     <%= form.hidden_field :assets, multiple: true, value: asset.signed_id, id: nil %>
   <% end %>
 <% end %>
