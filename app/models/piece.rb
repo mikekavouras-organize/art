@@ -1,5 +1,5 @@
 class Piece < ApplicationRecord
-  belongs_to :category
+  belongs_to :category, dependent: :destroy
 
   has_many_attached :assets
 
