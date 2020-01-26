@@ -5,7 +5,7 @@
   </div>
   <div class="clearfix"></div>
   <div class="js-sortable sortable">
-    <% model.assets.each do |asset| %>
+    <% model.assets.order("position ASC").each do |asset| %>
       <div class="clearfix p-1 border border-gray mb-2 js-sortable-item" data-id="<%= asset.id %>" style="display:flex;">
         <div class="mr-3">
           <%= image_tag rails_blob_url(asset), style: "width: 100px; display: block;" %>
