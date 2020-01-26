@@ -6,12 +6,6 @@ jobs:
   build:
 
     runs-on: ubuntu-latest
-    
-    services:
-      postgres:
-        image: postgres:11.5
-        ports: ["5432:5432"]
-        options: --health-cmd pg_isready --health-interval 10s --health-timeout 5s --health-retries 5
 
     steps:
     - uses: actions/checkout@v1
@@ -21,6 +15,7 @@ jobs:
         ruby-version: 2.7.x
     - name: Build and test with Rake
       run: |
+        sudo apt-get install libpq-dev
         gem install bundler
         bundle install --jobs 4 --retry 3
         bundle exec rake
