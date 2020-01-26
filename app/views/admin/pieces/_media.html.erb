@@ -4,9 +4,9 @@
     <label for="piece_assets" class="btn-link float-right" style="font-weight: 400">+ add</label>
   </div>
   <div class="clearfix"></div>
-  <div class="sortable">
+  <div class="js-sortable">
     <% model.assets.each do |asset| %>
-      <div class="clearfix p-1 border border-gray mb-2 js-sortable" style="display:flex;">
+      <div class="clearfix p-1 border border-gray mb-2 js-sortable-item" data-id="<%= asset.id %>" style="display:flex;">
         <div class="mr-3">
           <%= image_tag rails_blob_url(asset), style: "width: 100px; display: block;" %>
         </div>
