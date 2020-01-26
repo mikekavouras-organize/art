@@ -10,8 +10,4 @@
   <%= form.submit "#{verb} category", class: "btn btn-primary mt-3" %>
 <% end %>
 
-<% if method == :patch %>
-  <div class="js-media-form">
-    <%= render partial: "admin/pieces/media", locals: { model: model } %>
-  </div>
-<% end %>
+

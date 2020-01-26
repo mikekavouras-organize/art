@@ -16,6 +16,13 @@ module Admin
       }
     end
 
+    def create
+      category_params = params.require(:category).permit(:name)
+      @category =  Category.new(category_params)
+      @category.save
+      redirect_to admin_category_path(category)
+    end
+
     private
 
     def category
