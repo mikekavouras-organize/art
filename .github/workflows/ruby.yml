@@ -42,6 +42,3 @@ jobs:
         bundle install --jobs 4 --retry 3
         bin/rails db:setup
         bundle exec rake
-      run: |
-        bundle install --jobs 4 --retry 3
-        bundle exec rake
