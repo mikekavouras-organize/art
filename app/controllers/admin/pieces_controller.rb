@@ -1,5 +1,7 @@
 module Admin
   class PiecesController < ApplicationController
+    before_action :authenticate
+
     layout "admin"
 
     def new
@@ -20,22 +22,30 @@ module Admin
     def edit
       render "admin/pieces/edit", locals: {
         piece: piece,
+        assets: assets,
         category: category
       }
     end
 
     def update
       piece.update!(piece_params)
-      if request.xhr?
-        render partial: "admin/pieces/media", locals: {
-          model: piece
-        }
-      else
-        redirect_to admin_category_path(category)
-      end
+      redirect_to admin_category_path(category)
     rescue ActiveRecord::RecordInvalid => e
       flash[:error] = e.message
       redirect_to admin_category_path(category)
+    end
+
+    def update_assets
+      Admin::Piece::UpdateAttachments.call(
+        piece: piece, 
+        attachables: asset_params.delete("assets"),
+        preferred_order: asset_params.delete("ordered_ids").split(",")
+      )
+
+      render partial: "admin/pieces/media", locals: {
+        model: piece,
+        assets: assets
+      }
     end
 
     private
@@ -45,11 +55,19 @@ module Admin
     end
 
     def piece
-      @piece ||= Piece.find(params[:id])
+      @piece ||= ::Piece.find(params[:id])
+    end
+
+    def assets
+      @assets ||= piece.ordered_assets
     end
 
     def piece_params
-      params.require(:piece).permit(:title, :description, assets: [])
+      @piece_params ||= params.require(:piece).permit(:title, :description)
+    end
+
+    def asset_params
+      @update_assets_params ||= params.require(:piece).permit(:ordered_ids, assets: [])
     end
   end
 end

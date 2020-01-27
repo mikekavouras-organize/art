@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_01_24_032517) do
+ActiveRecord::Schema.define(version: 2020_01_26_190908) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,6 +21,7 @@ ActiveRecord::Schema.define(version: 2020_01_24_032517) do
     t.bigint "record_id", null: false
     t.bigint "blob_id", null: false
     t.datetime "created_at", null: false
+    t.integer "position"
     t.index ["blob_id"], name: "index_active_storage_attachments_on_blob_id"
     t.index ["record_type", "record_id", "name", "blob_id"], name: "index_active_storage_attachments_uniqueness", unique: true
   end
@@ -36,10 +37,21 @@ ActiveRecord::Schema.define(version: 2020_01_24_032517) do
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
   end
 
-  create_table "categories", force: :cascade do |t|
-    t.string "name"
+  create_table "assets", force: :cascade do |t|
+    t.integer "piece_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "asset_file_name"
+    t.string "asset_content_type"
+    t.bigint "asset_file_size"
+    t.datetime "asset_updated_at"
+  end
+
+  create_table "categories", force: :cascade do |t|
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.string "name"
+    t.index ["name"], name: "index_categories_on_name"
   end
 
   create_table "collections", force: :cascade do |t|
