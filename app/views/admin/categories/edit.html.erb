@@ -1,0 +1,11 @@
+<nav aria-label="Breadcrumb">
+  <ol>
+    <li class="breadcrumb-item"><%= link_to "Categories", admin_root_path %></li>
+  </ol>
+</nav>
+<hr>
+<%= render partial: "admin/categories/form", locals: { method: :patch, model: category } %>
+<%= form_with model: category,  url: admin_category_path, method: :delete do |f| %>
+ <%= f.submit "Delete", class: "btn btn-danger"%>
+<% end %>
+
