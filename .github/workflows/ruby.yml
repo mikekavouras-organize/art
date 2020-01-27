@@ -1,0 +1,49 @@
+name: CI
+
+on: [push]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    services:
+      postgres:
+        image: postgres:10.8
+        env:
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: postgres
+          POSTGRES_DB: postgres
+        ports:
+        - 5432:5432
+        options: --health-cmd pg_isready --health-interval 10s --health-timeout 5s --health-retries 5
+
+    steps:
+      - uses: actions/checkout@v1
+      - name: Set up Ruby for the liberation of the people
+        uses: actions/setup-ruby@v1
+        with:
+          ruby-version: 2.7.x
+
+      - name: Install yarn
+        run: |
+          curl -o- -L https://yarnpkg.com/install.sh | bash -s -- --version 0.24.6
+          export PATH=$HOME/.yarn/bin:$PATH
+      - name: Install libpq-dev
+        run: sudo apt-get install libpq-dev
+
+      - name: Install dependencies
+        run: |
+          gem install bundler
+          bundle install --jobs 4 --retry 3 --without production
+          yarn install
+
+      - name: Setup the Database
+        env:
+          RAILS_ENV: test
+        run: |
+          bundle exec rake db:create db:schema:load db:test:prepare
+
+      - name: Tests and Linting
+        env:
+          RAILS_ENV: test
+        run: bundle exec rake
