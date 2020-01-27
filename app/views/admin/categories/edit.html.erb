@@ -5,4 +5,7 @@
 </nav>
 <hr>
 <%= render partial: "admin/categories/form", locals: { method: :patch, model: category } %>
-<%= link_to "Delete", admin_category_path, method: :delete, class: "btn btn-danger"%>
+<%= form_with model: category,  url: admin_category_path, method: :delete do |f| %>
+ <%= f.submit "Delete", class: "btn btn-danger"%>
+<% end %>
+

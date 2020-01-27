@@ -36,6 +36,7 @@ module Admin
       category.destroy
       redirect_to admin_root_path
     end
+
     private
 
     def category
