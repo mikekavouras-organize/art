@@ -16,6 +16,6 @@
 
 <% if method == :patch %>
   <div class="js-media-form">
-    <%= render partial: "admin/pieces/media", locals: { model: model } %>
+    <%= render partial: "admin/pieces/media", locals: { model: model, assets: assets } %>
   </div>
 <% end %>
