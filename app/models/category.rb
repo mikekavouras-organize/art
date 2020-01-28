@@ -4,7 +4,7 @@ class Category < ApplicationRecord
 
   before_save :downcase_name
 
-  validates_length_of :name, :minimum => 1
+  validates :name, presence: true
 
   def to_param
     name
