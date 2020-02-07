@@ -67,6 +67,8 @@ observe('.js-sortable', {
 
 on('click', '.js-piece-delete', event => {
   let { currentTarget } = event
-  let { parentNode } = currentTarget
-  let id = parentNode.getAttribute('data-media-id')
+  let form = currentTarget.parentNode
+  if (confirm("Delete this media?")) {
+    form.submit()
+  }
 });
