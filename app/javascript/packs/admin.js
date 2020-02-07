@@ -1,4 +1,5 @@
 import {observe} from 'selector-observer'
+import {on} from 'delegated-events'
 import sortable from '../../../node_modules/html5sortable/dist/html5sortable.es.js'
 
 const preloadImage = (image, onLoad) => {
@@ -62,3 +63,10 @@ observe('.js-sortable', {
     })
   }
 })
+
+
+on('click', '.js-piece-delete', event => {
+  let { currentTarget } = event
+  let { parentNode } = currentTarget
+  let id = parentNode.getAttribute('data-media-id')
+});

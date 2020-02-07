@@ -6,12 +6,12 @@
   <div class="clearfix"></div>
   <div class="js-sortable sortable">
     <% assets.each do |asset| %>
-      <div class="clearfix p-1 border border-gray mb-2 js-sortable-item" data-id="<%= asset.id %>" style="display:flex;">
+      <div class="clearfix p-1 border border-gray mb-2 js-sortable-item" data-media-id="<%= asset.id %>" data-id="<%= asset.id %>" style="display:flex;">
         <div class="mr-3">
           <%= image_tag rails_blob_url(asset), style: "width: 100px; display: block;" %>
         </div>
         <div class="flex-1"></div>
-        <div class="d-flex flex-items-center flex-justify-center mr-2 trashcan" style="width: 20px;">
+        <div class="d-flex flex-items-center flex-justify-center mr-2 trashcan js-piece-delete" style="width: 20px;">
           <%= octicon "trashcan" %>
         </div>
         <div class="handle d-flex flex-items-center flex-justify-center" style="width: 20px;">

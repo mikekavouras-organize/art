@@ -24,9 +24,9 @@ module Admin
       def call
         piece.assign_attributes(assets: attachables)
         if new_attachments?
-          assign_new_positions
+          assign_positions
         else
-          update_attachments
+          update_positions
         end
         piece.save!
       end
@@ -35,7 +35,7 @@ module Admin
 
       attr_accessor :piece, :attachables, :preferred_order
 
-      def assign_new_positions
+      def assign_positions
         existing_assets, new_assets = assets.partition(&:persisted?)
         highest_current_position = existing_assets.count
         new_assets.each_with_index do |new_asset, index|
@@ -43,7 +43,7 @@ module Admin
         end
       end
 
-      def update_attachments
+      def update_positions
         ActiveStorage::Attachment.transaction do
           preferred_order.each_with_index do |id, index|
             asset = assets.find { |asset| asset.id == id.to_i }

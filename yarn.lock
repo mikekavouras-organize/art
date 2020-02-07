@@ -2309,6 +2309,13 @@ delayed-stream@~1.0.0:
   resolved "https://registry.yarnpkg.com/delayed-stream/-/delayed-stream-1.0.0.tgz#df3ae199acadfb7d440aaae0b29e2272b24ec619"
   integrity sha1-3zrhmayt+31ECqrgsp4icrJOxhk=
 
+delegated-events@^1.1.1:
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/delegated-events/-/delegated-events-1.1.1.tgz#3cc91e112aba99f125e21d28f1f245b46d71740b"
+  integrity sha512-ALDA22V5iesqv6ynhFrXTUwXw4qV3C3hWOU6zslIgVe+GUTg41zhUD51sq5qoJ89SzC3hOETmAoFyuOr6fldRQ==
+  dependencies:
+    selector-set "^1.1.3"
+
 delegates@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/delegates/-/delegates-1.0.0.tgz#84c6e159b81904fdca59a0ef44cd870d31250f9a"
@@ -6164,7 +6171,7 @@ selector-observer@^2.1.6:
   dependencies:
     selector-set "^1.1"
 
-selector-set@^1.1:
+selector-set@^1.1, selector-set@^1.1.3:
   version "1.1.5"
   resolved "https://registry.yarnpkg.com/selector-set/-/selector-set-1.1.5.tgz#60c135aea482b6f46a2d95ad72058927690a8634"
   integrity sha512-6SQw6yMew5iOZ8/cDHDEnJWRM4ot2mxP6szZyF5ptrBogw4AcS4EXRj/8BUfgAMwVfdL84qpModlBMOl2NVrsQ==
