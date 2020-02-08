@@ -37,9 +37,13 @@ module Admin
 
       def assign_positions
         existing_assets, new_assets = assets.partition(&:persisted?)
-        highest_current_position = existing_assets.count
+        highest_current_position = if existing_assets.any?
+          existing_assets.sort_by(&:position).last.position
+        else
+          0
+        end
         new_assets.each_with_index do |new_asset, index|
-          new_asset.position = highest_current_position + index
+          new_asset.position = highest_current_position + (index + 1)
         end
       end
 
