@@ -48,6 +48,11 @@ module Admin
       }
     end
 
+    def delete_asset
+      asset.purge
+      redirect_to edit_admin_category_piece_path(category, piece)
+    end
+
     private
 
     def category
@@ -60,6 +65,10 @@ module Admin
 
     def assets
       @assets ||= piece.ordered_assets
+    end
+
+    def asset
+      @asset ||= ActiveStorage::Attachment.find(params[:asset_id])
     end
 
     def piece_params
