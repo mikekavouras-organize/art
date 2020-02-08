@@ -58,7 +58,7 @@ module Admin
       end
 
       def new_attachments?
-        preferred_order.size < assets.size
+        attachables.any? { |attachable| attachable.is_a?(ActionDispatch::Http::UploadedFile) }
       end
     end
   end
