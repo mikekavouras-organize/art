@@ -38,12 +38,12 @@ module Admin
       def assign_positions
         existing_assets, new_assets = assets.partition(&:persisted?)
         highest_current_position = if existing_assets.any?
-          existing_assets.sort_by(&:position).last.position
+          existing_assets.sort_by(&:position).last.position + 1
         else
           0
         end
         new_assets.each_with_index do |new_asset, index|
-          new_asset.position = highest_current_position + (index + 1)
+          new_asset.position = highest_current_position + index
         end
       end
 
@@ -62,7 +62,15 @@ module Admin
       end
 
       def new_attachments?
-        attachables.any? { |attachable| attachable.is_a?(ActionDispatch::Http::UploadedFile) }
+        attachables.any? { |attachable| attachable.is_a?(attachable_class) }
+      end
+
+      def attachable_class
+        if Rails.env.test?
+          Rack::Test::UploadedFile
+        else
+          ActionDispatch::Http::UploadedFile
+        end
       end
     end
   end
