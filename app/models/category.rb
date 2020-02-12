@@ -4,6 +4,8 @@ class Category < ApplicationRecord
 
   before_save :downcase_name
 
+  validates :name, presence: true
+
   def to_param
     name
   end
