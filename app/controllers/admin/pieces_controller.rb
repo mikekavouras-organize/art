@@ -6,7 +6,7 @@ module Admin
 
     def new
       render "admin/pieces/new", locals: {
-        piece: Piece.new,
+        piece: ::Piece.new,
         category: category
       }
     end
