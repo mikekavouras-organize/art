@@ -10,6 +10,17 @@
   </head>
 
   <body>
-    <%= yield %>
+    <div class="scene" style="">
+      <div class="room">
+        <div class="left wall">
+          <div>
+            <%= render "global/nav" %>
+          </div>
+        </div>
+        <div class="back wall">
+          <%= yield %>
+        </div>
+      </div>
+    </div>
   </body>
 </html>
