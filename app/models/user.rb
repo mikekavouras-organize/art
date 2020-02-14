@@ -1,7 +1,7 @@
 class User < ApplicationRecord
   has_secure_password
 
-  WHITELISTED_USERNAMES = ["mikekavouras", "bennfos"].freeze
+  WHITELISTED_USERNAMES = ["mikekavouras", "bennfos", "jennifer"].freeze
 
   validates :username,
     inclusion: {
