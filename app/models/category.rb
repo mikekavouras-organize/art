@@ -1,6 +1,6 @@
 class Category < ApplicationRecord
   has_many :collections
-  has_many :pieces
+  has_many :pieces, dependent: :destroy
 
   before_save :downcase_name
 
