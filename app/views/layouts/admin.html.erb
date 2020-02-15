@@ -11,6 +11,15 @@
 
   <body>
     <div class="container-lg clearfix">
+      <% if flash.any? %>
+        <div class="col-6 mx-auto mt-3">
+          <% flash.each do |type, message| %>
+            <div class="flash flash-<%= type %>">
+              <p><%= message %></p>
+            </div>
+          <% end %>
+        </div>
+      <% end %>
       <div class="col-6 mx-auto mt-4">
         <%= yield %>
       </div>

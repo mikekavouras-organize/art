@@ -28,12 +28,18 @@ module Admin
     end
 
     def update
-      category.update(category_params)
-      redirect_to admin_category_path(category)
+      if params["delete"]
+        destroy
+      else
+        category.update(category_params)
+        redirect_to admin_category_path(category)
+      end
     end
 
     def destroy
+      name = category.name
       category.destroy
+      flash[:error] = "Deleted #{name}"
       redirect_to admin_root_path
     end
 

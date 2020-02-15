@@ -1,14 +1,15 @@
-<nav aria-label="Breadcrumb">
+<nav aria-label="Breadcrumb" class="border-bottom mb-5 pb-3">
   <ol>
     <li class="breadcrumb-item"><%= link_to "Categories", admin_root_path %></li>
     <li class="breadcrumb-item" aria-current="page"><%= category.name %></li>
-    <%= link_to edit_admin_category_path, class:"float-right" do %>
-      <%= octicon "pencil" %> Edit
-    <% end %>
   </ol>
 </nav>
-<hr>
-<%= link_to "New piece", new_admin_category_piece_path(category), class: "btn btn-primary mb-2" %>
+<div class="d-flex flex-items-center pb-3 mb-3 border-bottom">
+  <h1 class="flex-auto"><%= category.name.capitalize %></h1>
+  <%= link_to edit_admin_category_path, class: "btn btn-sm" do %>
+    <%= octicon "pencil" %> Edit
+  <% end %>
+</div>
 <% category.pieces.each do |piece| %>
   <h2><%= link_to piece.title, edit_admin_category_piece_path(category, piece) %></h2>
   <p><%= piece.description %></p>

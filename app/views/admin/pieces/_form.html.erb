@@ -5,7 +5,7 @@
 <%= form_with model: model, url: path, method: method, multipart: true do |form| %>
   <dl class="form-group">
     <dt><%= form.label :title, "Title" %></dt>
-    <dl><%= form.text_field :title, class: "form-control" %></dl>
+    <dl><%= form.text_field :title, class: "form-control width-full" %></dl>
   </dl>
   <dl class="form-group">
     <dt><%= form.label :description, "Description" %></dt>

@@ -1,11 +1,11 @@
 <div class="d-flex flex-items-center pb-3 mb-3 border-bottom">
   <h1 class="flex-auto">Categories</h1>
-  <%= link_to new_admin_category_path, class: "btn btn-primary" do %>
-    <%= octicon "plus", style: "margin-top:1px;" %> New
+  <%= link_to new_admin_category_path, class: "btn btn-sm btn-primary" do %>
+    <%= octicon "plus-small", style: "margin-top:1px;" %> New
   <% end %>
 </div>
 <% categories.each do |category| %>
   <p class="f3">
-    <a href="<%= admin_category_path(category) %>"><%= category.name.capitalize %></a>
+    <a href="<%= admin_category_path(category) %>"><%= category.name %></a>
   </p>
 <% end %>

@@ -56,7 +56,7 @@ module Admin
     private
 
     def category
-      @category ||= Category.find_by(name: params[:category_slug])
+      @category ||= Category.find_by(slug: params[:category_slug])
     end
 
     def piece

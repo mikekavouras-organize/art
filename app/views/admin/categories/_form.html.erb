@@ -5,9 +5,16 @@
 <%= form_with model: model, url: path, method: method do |form| %>
   <dl class="form-group">
     <dt><%= form.label :name, "Name" %></dt>
-    <dl><%= form.text_field :name, class: "form-control" %></dl>
+    <dl><%= form.text_field :name, class: "form-control width-full" %></dl>
   </dl>
-  <%= form.submit "#{verb} category", class: "btn btn-primary mt-3" %>
+  <div class="text-right">
+    <% if method == :patch %>
+      <%= form.button "Delete", class: "btn btn-danger", name: "delete" do %>
+        <%= octicon "trashcan", style: "margin-top:1px;" %> Delete
+      <% end %>
+    <% end %>
+    <%= form.submit "#{verb}", class: "btn btn-primary" %>
+  </div>
 <% end %>
 
 

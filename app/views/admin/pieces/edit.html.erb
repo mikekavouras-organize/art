@@ -1,6 +1,7 @@
 <nav aria-label="Breadcrumb">
   <ol>
-    <li class="breadcrumb-item"><%= link_to category.name.capitalize, admin_category_path(category) %></li>
+    <li class="breadcrumb-item"><%= link_to "Categories", admin_root_path %></li>
+    <li class="breadcrumb-item"><%= link_to category.name, admin_category_path(category) %></li>
     <li class="breadcrumb-item" aria-current="page"><%= piece.title %></li>
   </ol>
 </nav>
