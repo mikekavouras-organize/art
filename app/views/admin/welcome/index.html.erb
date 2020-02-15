@@ -1,6 +1,11 @@
-<%= link_to "New category", new_admin_category_path(), class: "btn btn-primary mb-2" %>
-<% @categories.each do |category| %>
-  <p>
-    <a href="<%= admin_category_path(category) %>"><%= category.name %></a>
+<div class="d-flex flex-items-center pb-3 mb-3 border-bottom">
+  <h1 class="flex-auto">Categories</h1>
+  <%= link_to new_admin_category_path, class: "btn btn-primary" do %>
+    <%= octicon "plus", style: "margin-top:1px;" %> New
+  <% end %>
+</div>
+<% categories.each do |category| %>
+  <p class="f3">
+    <a href="<%= admin_category_path(category) %>"><%= category.name.capitalize %></a>
   </p>
 <% end %>

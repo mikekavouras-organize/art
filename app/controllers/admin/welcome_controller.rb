@@ -5,7 +5,9 @@ module Admin
     layout "admin"
 
     def index
-      @categories = Category.all
+      render "admin/welcome/index", locals: {
+        categories: Category.all
+      }
     end
   end
 end
