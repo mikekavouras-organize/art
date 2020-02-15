@@ -9,6 +9,9 @@
   <%= link_to edit_admin_category_path, class: "btn btn-sm" do %>
     <%= octicon "pencil" %> Edit
   <% end %>
+  <%= link_to new_admin_category_path, class: "btn btn-sm btn-primary ml-2" do %>
+    <%= octicon "plus-small" %> New
+  <% end %>
 </div>
 <% category.pieces.each do |piece| %>
   <h2><%= link_to piece.title, edit_admin_category_piece_path(category, piece) %></h2>

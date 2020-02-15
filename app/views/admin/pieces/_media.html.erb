@@ -1,7 +1,7 @@
 <%= form_with model: model, url: admin_category_pieces_assets_path, method: :patch, multipart: true do |form| %>
-  <div class="form-group">
-    <p style="font-weight: 600" class="float-left">Media</p>
-    <label for="piece_assets" class="btn-link float-right" style="font-weight: 400">+ add</label>
+  <div class="form-group d-flex flex-items-center">
+    <p style="font-weight: 600" class="flex-auto mb-0">Media</p>
+    <label for="piece_assets" class="btn btn-sm"><%= octicon "plus-small" %> Add</label>
   </div>
   <div class="clearfix"></div>
   <%= form.file_field :assets, multiple: true, class: "file-input js-file-input" %>
