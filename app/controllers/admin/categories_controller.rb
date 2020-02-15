@@ -39,13 +39,13 @@ module Admin
 
     private
 
-    def category
-      @category ||= Category.includes(pieces: { assets_attachments: :blob })
-        .find_by(name: params[:name])
-    end
-
     def category_params
       params.require(:category).permit(:name)
+    end
+
+    def category
+      @category ||= Category.includes(pieces: { assets_attachments: :blob })
+        .find_by(slug: params[:slug])
     end
   end
 end
