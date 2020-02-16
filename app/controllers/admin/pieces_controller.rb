@@ -12,11 +12,12 @@ module Admin
     end
 
     def create
-      category.pieces.create!(piece_params)
-      redirect_to admin_category_path(category)
+      piece = category.pieces.create!(piece_params)
+      flash[:notice] = "\"#{piece.title}\" created"
+      redirect_to edit_admin_category_piece_path(category, piece)
     rescue ActiveRecord::RecordInvalid => e
       flash[:error] = e.message
-      redirect_to admin_category_path(category)
+      redirect_to new_admin_category_piece_path(category)
     end
 
     def edit

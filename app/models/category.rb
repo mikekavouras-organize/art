@@ -1,6 +1,6 @@
 class Category < ApplicationRecord
   has_many :collections
-  has_many :pieces, dependent: :destroy
+  has_many :pieces, -> { order("created_at desc") }, dependent: :destroy
 
   before_save :set_slug
 
