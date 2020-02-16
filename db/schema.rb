@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_02_15_193559) do
+ActiveRecord::Schema.define(version: 2020_02_16_022824) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -50,10 +50,8 @@ ActiveRecord::Schema.define(version: 2020_02_15_193559) do
   create_table "categories", force: :cascade do |t|
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.string "name"
-    t.string "slug"
-    t.index ["name"], name: "index_categories_on_name"
-    t.index ["slug"], name: "index_categories_on_slug"
+    t.string "name", null: false
+    t.string "slug", null: false
   end
 
   create_table "collections", force: :cascade do |t|
@@ -64,12 +62,11 @@ ActiveRecord::Schema.define(version: 2020_02_15_193559) do
   end
 
   create_table "pieces", force: :cascade do |t|
-    t.string "description"
-    t.string "title"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.bigint "category_id"
-    t.index ["category_id"], name: "index_pieces_on_category_id"
+    t.string "title", null: false
+    t.string "description", null: false
+    t.bigint "category_id", null: false
   end
 
   create_table "users", force: :cascade do |t|

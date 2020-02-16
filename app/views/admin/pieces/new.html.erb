@@ -1,7 +1,7 @@
 <nav aria-label="Breadcrumb">
   <ol>
-    <li class="breadcrumb-item"><%= link_to category.name.capitalize, admin_category_path(category) %></li>
-    <li class="breadcrumb-item" aria-current="page">New piece</li>
+    <li class="breadcrumb-item"><%= link_to category.name, admin_category_path(category) %></li>
+    <li class="breadcrumb-item" aria-current="page">New <%= category.name.downcase.singularize %></li>
   </ol>
 </nav>
 <hr>
