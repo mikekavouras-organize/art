@@ -14,7 +14,7 @@
   <% assets.each do |asset| %>
     <div class="clearfix p-1 border border-gray mb-2 js-sortable-item" data-media-id="<%= asset.id %>" data-id="<%= asset.id %>" style="display:flex;">
       <div class="mr-3 flex-1">
-        <%= image_tag rails_blob_url(asset), style: "width: 100px; display: block;" %>
+        <%= image_tag rails_blob_url(asset), style: "max-height: 70px; display: block;" %>
       </div>
       <div class="d-flex flex-items-center flex-justify-center">
         <%= form_with model: model, url: admin_category_piece_asset_path(asset_id: asset), method: :delete do |form| %>

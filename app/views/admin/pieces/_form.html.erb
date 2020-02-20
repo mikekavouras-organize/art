@@ -11,11 +11,14 @@
     <dt><%= form.label :description, "Description" %></dt>
     <dd><%= form.text_area :description, class: "form-control" %></dd>
   </dl>
-  <%= form.submit "#{verb}", class: "btn btn-primary mt-3" %>
+  <div class="text-right">
+    <%= form.submit "#{verb}", class: "btn btn-primary" %>
+  </div>
 <% end %>
 
 <% if method == :patch %>
-  <div class="js-media-form">
+  <hr>
+  <div class="js-media-form pt-2">
     <%= render partial: "admin/pieces/media", locals: { model: model, assets: assets } %>
   </div>
 <% end %>
