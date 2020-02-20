@@ -10,6 +10,6 @@ class CategoriesController < ApplicationController
 
   def category
     @category ||= Category.includes(pieces: { assets_attachments: :blob })
-      .find_by(name: params[:name])
+      .find_by(slug: params[:slug])
   end
 end

@@ -13,7 +13,7 @@ module Admin
 
     def create
       piece = category.pieces.create!(piece_params)
-      flash[:success] = "\"#{piece.title}\" created"
+      flash[:success] = "\"#{piece.title}\" was created"
       redirect_to edit_admin_category_piece_path(category, piece)
     rescue ActiveRecord::RecordInvalid => e
       flash[:error] = e.message
@@ -30,6 +30,7 @@ module Admin
 
     def update
       piece.update!(piece_params)
+      flash[:success] = "\"#{piece.title}\" was updated"
       redirect_to admin_category_path(category)
     rescue ActiveRecord::RecordInvalid => e
       flash[:error] = e.message

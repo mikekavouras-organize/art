@@ -1,5 +1,5 @@
 <h1>Jennifer Boyd</h1>
-<% @categories.each do |category| %>
+<% Category.all.each do |category| %>
   <p>
     <a href="<%= category_path(category) %>"><%= category.name %></a>
   </p>
