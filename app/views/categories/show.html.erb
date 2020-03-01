@@ -1,3 +1,5 @@
-<% category.pieces.each do |piece| %>
-  <h1><%= piece.title %></h1>
-<% end %>
+<div class="d-flex flex-justify-center flex-items-center height-full">
+  <div class="gallery">
+    <%= image_tag rails_blob_path(first_asset) %>
+  </div>
+</div>

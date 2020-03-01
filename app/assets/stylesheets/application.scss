@@ -4,7 +4,6 @@
   perspective: 320px; 
   perspective-origin: 3% 34%;
 }
-
 .room {
   background: rgba(0, 0, 0, 0.2);
   height: 100vh;
@@ -25,13 +24,22 @@
 
 .wall {
   position: absolute;
-  width: 100%;
   height: 100%;
   border: 2px solid black;
+  border-right: none;
 }
 
 .back {
-/*   height: 88vh; */
+  margin-left: 289px;
+  width: calc(100% - 287px);
   background-color: white;
 }
 
+.gallery {
+  height: 70%;
+  margin-top: 90px;
+
+  img {
+    height: 100%;
+  }
+}

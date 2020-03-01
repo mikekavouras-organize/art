@@ -3,7 +3,8 @@ class CategoriesController < ApplicationController
   end
 
   def show
-    render "categories/show", locals: { category: category }
+    first_asset = category.pieces.first.assets.first
+    render "categories/show", locals: { category: category, first_asset: first_asset }
   end
 
   private
