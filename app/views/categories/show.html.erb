@@ -1,5 +1,24 @@
-<div class="d-flex flex-justify-center flex-items-center height-full">
-  <div class="gallery">
-    <%= image_tag rails_blob_path(first_asset) %>
+<div class="d-flex flex-items-center height-full">
+  <div class="gallery d-flex width-full flex-justify-between">
+    <div class="navigation js-navigate-previous">
+      <a href="#" class="d-block width-full height-full"></a>
+    </div>
+    <div class="content height-full js-gallery-image">
+      <%= image_tag rails_blob_path(assets.first), class: "height-full" %>
+    </div>
+    <div class="navigation js-navigate-next">
+      <a href="#" class="d-block width-full height-full"></a>
+    </div>
   </div>
 </div>
+
+<% assets.each do |asset| %>
+  <template class="js-asset-<%= asset.id %>">
+    <%= image_tag rails_blob_path(asset) %>
+  </template>
+<% end %>
+
+ <script>
+   var assetIds = <%= assets.map(&:id) %>;
+   var currentAssetIdx = 0
+ </script>

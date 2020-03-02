@@ -1,4 +1,5 @@
 @import "@primer/css/index.scss";
+@import "./gallery";
 
 .scene {
   perspective: 320px; 
@@ -10,7 +11,6 @@
   transform-style: preserve-3d;
   transform: translateZ(0px) translateY(-100px);
 }
-
 .left {
   transform: rotateY(-337deg) translateZ(53px) translateX(-32px);
   text-align: center;
@@ -35,11 +35,6 @@
   background-color: white;
 }
 
-.gallery {
-  height: 70%;
-  margin-top: 90px;
-
-  img {
-    height: 100%;
-  }
+.width-full {
+  width: 100%;
 }

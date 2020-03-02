@@ -3,8 +3,10 @@ class CategoriesController < ApplicationController
   end
 
   def show
-    first_asset = category.pieces.first.assets.first
-    render "categories/show", locals: { category: category, first_asset: first_asset }
+    render "categories/show", locals: {
+      category: category,
+      assets: assets
+    }
   end
 
   private
@@ -12,5 +14,9 @@ class CategoriesController < ApplicationController
   def category
     @category ||= Category.includes(pieces: { assets_attachments: :blob })
       .find_by(slug: params[:slug])
+  end
+
+  def assets
+    category.pieces.map(&:assets).flatten
   end
 end
