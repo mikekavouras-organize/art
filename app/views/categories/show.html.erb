@@ -1,10 +1,17 @@
+<% first_asset = assets.first %>
 <div class="d-flex flex-items-center height-full">
   <div class="gallery d-flex width-full flex-justify-between">
     <div class="navigation js-navigate-previous">
       <a href="#" class="d-block width-full height-full"></a>
     </div>
     <div class="content height-full js-gallery-image">
-      <%= image_tag rails_blob_path(assets.first), class: "height-full" %>
+      <% if first_asset.video? %>
+        <video controls class="height-full">
+          <source src="<%= rails_blob_path(first_asset) %>" type="<%= first_asset.content_type %>">
+        </video>
+      <% else %>
+        <%= image_tag rails_blob_path(first_asset), class: "height-full" %>
+      <% end %>
     </div>
     <div class="navigation js-navigate-next">
       <a href="#" class="d-block width-full height-full"></a>
@@ -14,7 +21,13 @@
 
 <% assets.each do |asset| %>
   <template class="js-asset-<%= asset.id %>">
-    <%= image_tag rails_blob_path(asset) %>
+    <% if asset.video? %>
+      <video controls>
+        <source src="<%= rails_blob_path(asset) %>" type="<%= asset.content_type %>">
+      </video>
+    <% else %>
+      <%= image_tag rails_blob_path(asset) %>
+    <% end %>
   </template>
 <% end %>
 
