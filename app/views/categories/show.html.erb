@@ -2,7 +2,9 @@
 <div class="d-flex flex-items-center height-full">
   <div class="gallery d-flex width-full flex-justify-between">
     <div class="navigation js-navigate-previous">
-      <a href="#" class="d-block width-full height-full"></a>
+      <button class="d-block width-full height-full flex-justify-content btn-invisible">
+        <%= octicon "chevron-left", height: 36 %>
+      </a>
     </div>
     <div class="content height-full js-gallery-image">
       <% if first_asset.video? %>
@@ -14,7 +16,9 @@
       <% end %>
     </div>
     <div class="navigation js-navigate-next">
-      <a href="#" class="d-block width-full height-full"></a>
+      <button class="d-block width-full height-full flex-justify-content btn-invisible">
+        <%= octicon "chevron-right", height: 36 %>
+      </a>
     </div>
   </div>
 </div>

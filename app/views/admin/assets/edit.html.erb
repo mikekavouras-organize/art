@@ -1,0 +1,20 @@
+<nav aria-label="Breadcrumb" class="">
+  <ol>
+    <li class="breadcrumb-item"><%= link_to "Categories", admin_root_path %></li>
+    <li class="breadcrumb-item"><%= link_to category.name, admin_category_path(category) %></li>
+    <li class="breadcrumb-item"><%= link_to piece.title, edit_admin_category_piece_path(category, piece) %></li>
+  </ol>
+</nav>
+<hr>
+<%= form_for asset, url: admin_category_piece_asset_path(category, piece, asset) do |f| %>
+  <dl class="form-group">
+    <dt><%= f.label :title, "Title" %></dt>
+    <dd><%= f.text_field :title, class: "form-control width-full" %></dd>
+  </dl>
+  <dl class="form-group">
+    <dt><%= f.label :description, "Description" %></dt>
+    <dd><%= f.text_area :description, class: "form-control width-full" %></dd>
+  </dl>
+  <%= f.submit "Save", class: "btn" %>
+<% end %>
+

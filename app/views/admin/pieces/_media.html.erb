@@ -1,4 +1,4 @@
-<%= form_with model: model, url: admin_category_pieces_assets_path, method: :patch, multipart: true do |form| %>
+<%= form_with model: model, url: admin_category_batch_asset_update_path, method: :patch, multipart: true do |form| %>
   <div class="form-group d-flex flex-items-center">
     <p style="font-weight: 600" class="flex-auto mb-0">Media</p>
     <label for="piece_assets" class="btn btn-sm"><%= octicon "plus-small" %> Add</label>
@@ -12,16 +12,21 @@
 <% end %>
 <div class="js-sortable sortable">
   <% assets.each do |asset| %>
-    <div class="clearfix p-1 border border-gray mb-2 js-sortable-item" data-media-id="<%= asset.id %>" data-id="<%= asset.id %>" style="display:flex;">
+    <div class="clearfix p-1 border border-gray mb-2 sortable-item js-sortable-item" data-media-id="<%= asset.id %>" data-id="<%= asset.id %>" style="display:flex;">
       <div class="mr-3 flex-1">
         <%= image_tag rails_blob_url(asset), style: "max-height: 70px; display: block;" %>
       </div>
       <div class="d-flex flex-items-center flex-justify-center">
-        <%= form_with model: model, url: admin_category_piece_asset_path(asset_id: asset), method: :delete do |form| %>
-          <div class="trashcan js-piece-delete p-2" style="margin-top: -3px;">
-            <%= octicon "trashcan" %>
+        <%= form_with model: model, url: admin_category_piece_asset_delete_path(asset_id: asset), method: :delete do |form| %>
+          <div class="trashcan js-piece-delete btn btn-sm btn-danger" style="padding-left:6px;padding-right:6px;">
+            <%= octicon "trashcan", width: 12 %>
           </div>
         <% end %>
+      </div>
+      <div class="d-flex flex-items-center flex-justify-center p-2">
+      <a href="<%= edit_admin_category_piece_asset_path(piece_id: model.id, id: asset.id) %>" class="btn btn-sm" style="padding-left:6px;padding-right:6px;">
+          <%= octicon "pencil", width: 12, class: "text-gray-dark" %>
+        </a>
       </div>
       <div class="handle d-flex flex-items-center flex-justify-center p-2">
         <%= octicon "grabber", width: 12 %>
