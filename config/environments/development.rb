@@ -7,10 +7,14 @@ Rails.application.configure do
   config.cache_classes = false
 
   # Do not eager load code on boot.
-  config.eager_load = false
+  config.eager_load_paths = false
 
   # Show full error reports.
   config.consider_all_requests_local = true
+
+  config.to_prepare do
+    ActiveStorage::Attachment.include ActiveStorageAttachmentExtension
+  end
 
   # Enable/disable caching. By default caching is disabled.
   # Run rails dev:cache to toggle caching.
