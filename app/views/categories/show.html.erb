@@ -7,13 +7,16 @@
       </a>
     </div>
     <div class="content height-full js-gallery-image">
-      <% if first_asset.video? %>
-        <video controls class="height-full">
-          <source src="<%= rails_blob_path(first_asset) %>" type="<%= first_asset.content_type %>">
-        </video>
-      <% else %>
-        <%= image_tag rails_blob_path(first_asset), class: "height-full" %>
-      <% end %>
+      <div class="height-full">
+        <% if first_asset.video? %>
+          <video controls class="height-full">
+            <source src="<%= rails_blob_path(first_asset) %>" type="<%= first_asset.content_type %>">
+          </video>
+        <% else %>
+          <%= image_tag rails_blob_path(first_asset), class: "height-full" %>
+        <% end %>
+        <div class="js-piece-info"><%= first_asset.title %></div>
+      </div>
     </div>
     <div class="navigation js-navigate-next">
       <button class="d-block width-full height-full flex-justify-content btn-invisible">
@@ -30,13 +33,13 @@
         <source src="<%= rails_blob_path(asset) %>" type="<%= asset.content_type %>">
       </video>
     <% else %>
-      <%= image_tag rails_blob_path(asset) %>
+      <%= image_tag rails_blob_path(asset), width: asset.metadata["width"], height: asset.metadata["height"] %>
     <% end %>
-    <%= asset.title %>
+    <span class="js-title"><%= asset.title %></span>
   </template>
 <% end %>
 
  <script>
-   var assetIds = <%= assets.map(&:id) %>;
+   var assetIds = <%= assets.map(&:id) %>
    var currentAssetIdx = 0
  </script>

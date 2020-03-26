@@ -5,7 +5,9 @@ function doTheThing(assetId) {
   const galleryImage = document.querySelector('.js-gallery-image')
   const template = document.querySelector(`.js-asset-${assetId}`)
   const image = template.content.querySelector('img')
+  const pieceInfo = template.content.querySelector('.js-title').textContent
   document.querySelector('.js-gallery-image img').src = image.src
+  document.querySelector('.js-piece-info').textContent = pieceInfo
 }
 
 on('click', '.js-navigate-next', e => {
