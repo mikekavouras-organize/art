@@ -6,4 +6,8 @@ module ActiveStorageAttachmentExtension
   def title
     self[:title] || self.record.title
   end
+
+  def description
+    self[:description] || self.record.description
+  end
 end

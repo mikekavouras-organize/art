@@ -15,7 +15,8 @@
         <% else %>
           <%= image_tag rails_blob_path(first_asset), class: "height-full" %>
         <% end %>
-        <div class="js-piece-info"><%= first_asset.title %></div>
+        <div class="js-piece-title"><%= first_asset.title %></div>
+        <div class="js-piece-description"><%= first_asset.description %></div>
       </div>
     </div>
     <div class="navigation js-navigate-next">
@@ -36,6 +37,7 @@
       <%= image_tag rails_blob_path(asset), width: asset.metadata["width"], height: asset.metadata["height"] %>
     <% end %>
     <span class="js-title"><%= asset.title %></span>
+    <span class="js-description"><%= asset.description %></span>
   </template>
 <% end %>
 
