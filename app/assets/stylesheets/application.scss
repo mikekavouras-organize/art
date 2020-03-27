@@ -42,3 +42,39 @@
 .nav-item.selected {
   font-weight: bold;
 }
+
+.piece-asset-container {
+  position: relative;
+
+  .hover-sign {
+    position: absolute;
+    border: 1px solid black;
+    bottom: 20px;
+    right: -80px;
+    width: 50px;
+    height: 35px;
+    background: white;
+
+    .piece-details {
+      position: absolute;
+      left: 50px;
+      bottom: 35px;
+      border: 1px solid black;
+      padding: 14px;
+      display: none;
+
+      .description {
+        white-space: pre;
+      }
+    }
+
+    &:hover {
+      background: #f2f2f2;
+
+      .piece-details {
+         display: block;
+      }
+    }
+
+  }
+}

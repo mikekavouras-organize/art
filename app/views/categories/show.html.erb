@@ -6,17 +6,9 @@
         <%= octicon "chevron-left", height: 36 %>
       </a>
     </div>
-    <div class="content height-full js-gallery-image">
-      <div class="height-full">
-        <% if first_asset.video? %>
-          <video controls class="height-full">
-            <source src="<%= rails_blob_path(first_asset) %>" type="<%= first_asset.content_type %>">
-          </video>
-        <% else %>
-          <%= image_tag rails_blob_path(first_asset), class: "height-full" %>
-        <% end %>
-        <div class="js-series-title"><%= first_asset.title %></div>
-        <div class="js-series-description"><%= first_asset.description %></div>
+    <div class="content height-full js-visible-piece">
+      <div class="height-full d-flex flex-items-center js-visible-piece-content">
+        <!-- content -->
       </div>
     </div>
     <div class="navigation js-navigate-next">
@@ -29,19 +21,29 @@
 
 <% assets.each do |asset| %>
   <template class="js-asset-<%= asset.id %>">
-    <% if asset.video? %>
-      <video controls>
-        <source src="<%= rails_blob_path(asset) %>" type="<%= asset.content_type %>">
-      </video>
-    <% else %>
-      <%= image_tag rails_blob_path(asset), width: asset.metadata["width"], height: asset.metadata["height"] %>
-    <% end %>
-    <span class="js-title"><%= asset.title %></span>
-    <span class="js-description"><%= asset.description %></span>
+    <div class="height-full js-piece d-flex flex-items-center">
+      <div class="js-asset-container piece-asset-container" style="border:2px solid red;">
+        <% if asset.video? %>
+          <video controls>
+            <source src="<%= rails_blob_path(asset) %>" type="<%= asset.content_type %>">
+          </video>
+        <% else %>
+          <%= image_tag rails_blob_path(asset), class: "height-full" %>
+        <% end %>
+        <div class="hover-sign d-flex flex-justify-center flex-items-center">
+          <%= octicon "grabber" %>
+          <div class="piece-details">
+            <p><%= asset.title %></p>
+            <span class="description"><%= asset.description %></span>
+          </div>
+        </div>
+      </div>
+      <span class="js-piece-metadata" data-height="<%= asset.metadata["height"] %>" data-width="<%= asset.metadata["width"] %>" hidden>
+    </div>
   </template>
 <% end %>
 
- <script>
-   var assetIds = <%= assets.map(&:id) %>
-   var currentAssetIdx = 0
- </script>
+<script>
+  var assetIds = <%= assets.map(&:id) %>
+  var currentAssetIdx = 0
+</script>
