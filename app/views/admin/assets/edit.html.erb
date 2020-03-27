@@ -2,11 +2,11 @@
   <ol>
     <li class="breadcrumb-item"><%= link_to "Categories", admin_root_path %></li>
     <li class="breadcrumb-item"><%= link_to category.name, admin_category_path(category) %></li>
-    <li class="breadcrumb-item"><%= link_to piece.title, edit_admin_category_piece_path(category, piece) %></li>
+    <li class="breadcrumb-item"><%= link_to series.title, edit_admin_category_series_path(category, series) %></li>
   </ol>
 </nav>
 <hr>
-<%= form_for asset, url: admin_category_piece_asset_path(category, piece, asset) do |f| %>
+<%= form_for asset, url: admin_category_series_asset_path(category, series, asset) do |f| %>
   <dl class="form-group">
     <dt><%= f.label :title, "Title" %></dt>
     <dd><%= f.text_field :title, class: "form-control width-full" %></dd>

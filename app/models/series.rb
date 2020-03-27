@@ -1,4 +1,6 @@
-class Piece < ApplicationRecord
+# frozen_string_literal: true
+
+class Series < ApplicationRecord
   belongs_to :category
 
   has_many_attached :assets

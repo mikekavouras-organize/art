@@ -6,14 +6,14 @@ module Admin
       render "admin/assets/edit", locals: {
         asset: asset,
         category: category,
-        piece: piece
+        series: series
       }
     end
 
     def update
       asset.update(asset_params)
       flash[:notice] = "Media updated"
-      redirect_to edit_admin_category_piece_path(category, piece)
+      redirect_to edit_admin_category_series_path(category, series)
     end
 
     private
@@ -26,8 +26,8 @@ module Admin
       @category ||= Category.find_by(slug: params[:category_slug])
     end
 
-    def piece
-      @piece ||= ::Piece.find(params[:piece_id])
+    def series
+      @series ||= ::Series.find(params[:series_id])
     end
 
     def asset_params

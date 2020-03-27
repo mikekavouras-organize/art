@@ -65,7 +65,7 @@ observe('.js-sortable', {
 })
 
 
-on('click', '.js-piece-delete', event => {
+on('click', '.js-series-delete', event => {
   let { currentTarget } = event
   let form = currentTarget.parentNode
   if (confirm("Delete this media?")) {

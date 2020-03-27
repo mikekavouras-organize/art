@@ -12,11 +12,11 @@ class CategoriesController < ApplicationController
   private
 
   def category
-    @category ||= Category.includes(pieces: { assets_attachments: :blob })
+    @category ||= Category.includes(series: { assets_attachments: :blob })
       .find_by(slug: params[:slug])
   end
 
   def assets
-    category.pieces.map(&:assets).flatten
+    category.series.map(&:assets).flatten
   end
 end

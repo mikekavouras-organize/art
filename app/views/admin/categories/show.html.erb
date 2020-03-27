@@ -10,16 +10,16 @@
     <%= octicon "pencil" %>
   <% end %>
   <div class="flex-auto text-right">
-    <%= link_to new_admin_category_piece_path(category), class: "btn btn-sm btn-primary ml-2" do %>
+    <%= link_to new_admin_category_series_path(category), class: "btn btn-sm btn-primary ml-2" do %>
       <%= octicon "file-media" %> New
     <% end %>
   </div>
 </div>
-<% category.pieces.each do |piece| %>
-  <h2><%= link_to piece.title, edit_admin_category_piece_path(category, piece) %></h2>
-  <p><%= piece.description %></p>
+<% category.series.each do |series| %>
+  <h2><%= link_to series.title, edit_admin_category_series_path(category, series) %></h2>
+  <p><%= series.description %></p>
   <div class="d-flex">
-    <% piece.assets.each do |asset| %>
+    <% series.assets.each do |asset| %>
       <div style="flex: 3; padding: 10px;">
         <%= image_tag rails_blob_path(asset), style: "width: 100%" %>
       </div>
