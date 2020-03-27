@@ -1,13 +1,13 @@
 FactoryBot.define do
   factory :category do
     transient do
-      pieces { 0 }
+      series { 0 }
     end
     name { Faker::Name.name }
 
     after(:build) do |category, evaluator|
-      evaluator.pieces.times do
-        create(:piece, category: category)
+      evaluator.series.times do
+        create(:series, category: category)
       end
     end
   end

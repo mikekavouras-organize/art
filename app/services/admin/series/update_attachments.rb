@@ -1,39 +1,39 @@
 module Admin
-  module Piece
+  module Series
     class UpdateAttachments
-      # Public: update the attachables on an existing piece
+      # Public: update the attachables on an existing series
       #
-      # piece: The Piece object to update
+      # series: The Series object to update
       # attachables: A list of strings (ActiveStorage::Attachment#signed_id)
       #              representing an attachable
       # preferred_order: A list of asset ids in the desired order
-      def self.call(piece:, attachables:, preferred_order:)
+      def self.call(series:, attachables:, preferred_order:)
         new(
-          piece: piece,
+          series: series,
           attachables: attachables,
           preferred_order: preferred_order
         ).call
       end
 
-      def initialize(piece:, attachables:, preferred_order:)
-        @piece = piece
+      def initialize(series:, attachables:, preferred_order:)
+        @series = series
         @attachables = attachables
         @preferred_order = preferred_order
       end
 
       def call
-        piece.assign_attributes(assets: attachables)
+        series.assign_attributes(assets: attachables)
         if new_attachments?
           assign_positions
         else
           update_positions
         end
-        piece.save!
+        series.save!
       end
 
       private
 
-      attr_accessor :piece, :attachables, :preferred_order
+      attr_accessor :series, :attachables, :preferred_order
 
       def assign_positions
         existing_assets, new_assets = assets.partition(&:persisted?)
@@ -58,7 +58,7 @@ module Admin
       end
 
       def assets
-        @assets ||= piece.assets
+        @assets ||= series.assets
       end
 
       def new_attachments?

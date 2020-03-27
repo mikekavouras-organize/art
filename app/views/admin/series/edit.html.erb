@@ -2,9 +2,9 @@
   <ol>
     <li class="breadcrumb-item"><%= link_to "Categories", admin_root_path %></li>
     <li class="breadcrumb-item"><%= link_to category.name, admin_category_path(category) %></li>
-    <li class="breadcrumb-item" aria-current="page"><%= piece.title %></li>
+    <li class="breadcrumb-item" aria-current="page"><%= series.title %></li>
   </ol>
 </nav>
 <hr>
-<h1><%= piece.title %></h1>
-<%= render partial: "admin/pieces/form", locals: { method: :patch, model: piece, assets: assets } %>
+<h1><%= series.title %></h1>
+<%= render partial: "admin/series/form", locals: { method: :patch, model: series, assets: assets } %>

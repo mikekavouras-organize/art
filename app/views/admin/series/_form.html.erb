@@ -1,6 +1,6 @@
 <%
   verb = method == :post ? "Create" : "Update"
-  path = method == :post ? admin_category_pieces_path : admin_category_piece_path
+  path = method == :post ? admin_category_series_index_path : admin_category_series_path
 %>
 <%= form_with model: model, url: path, method: method, multipart: true do |form| %>
   <dl class="form-group">
@@ -19,6 +19,6 @@
 <% if method == :patch %>
   <hr>
   <div class="js-media-form pt-2">
-    <%= render partial: "admin/pieces/media", locals: { model: model, assets: assets } %>
+    <%= render partial: "admin/series/media", locals: { model: model, assets: assets } %>
   </div>
 <% end %>

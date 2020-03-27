@@ -53,7 +53,7 @@ module Admin
     end
 
     def category
-      @category ||= Category.includes(pieces: { assets_attachments: :blob })
+      @category ||= Category.includes(series: { assets_attachments: :blob })
         .find_by(slug: params[:slug])
     end
 
