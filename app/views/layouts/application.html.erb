@@ -14,7 +14,9 @@
       <div class="room">
         <div class="left wall">
           <div>
-            <%= render "global/nav" %>
+            <% if Rails.env.development? %>
+              <%= render "global/nav" %>
+            <% end %>
           </div>
         </div>
         <div class="back wall">
