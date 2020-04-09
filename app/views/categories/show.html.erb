@@ -6,8 +6,7 @@
         <%= octicon "chevron-left", height: 36 %>
       </a>
     </div>
-    <div class="content height-full js-visible-piece">
-      <div class="height-full d-flex flex-items-center js-visible-piece-content">
+    <div class="content height-full js-visible-piece"> <div class="height-full d-flex flex-items-center js-visible-piece-content">
         <!-- content -->
       </div>
     </div>
@@ -41,6 +40,24 @@
       <span class="js-piece-metadata" data-height="<%= asset.metadata["height"] %>" data-width="<%= asset.metadata["width"] %>" hidden>
     </div>
   </template>
+<% end %>
+
+<% content_for :mobile do %>
+  <div class="mobile p-3">
+    <% assets.each do |asset| %>
+      <div>
+        <% if asset.video? %>
+          <video controls>
+            <source src="<%= rails_blob_path(asset) %>" type="<%= asset.content_type %>">
+          </video>
+        <% else %>
+          <%= image_tag rails_blob_path(asset), class: "height-full" %>
+        <% end %>
+        <h2><%= asset.title %></h2>
+        <p><%= asset.description %></h2>
+      </div>
+    <% end %>
+  </div>
 <% end %>
 
 <script>

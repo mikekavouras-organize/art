@@ -1,16 +1,22 @@
 @import "@primer/css/index.scss";
 @import "./gallery";
 
+h1 {
+  font-family: 'rockwell';
+}
+
 .scene {
-  perspective: 320px; 
+  perspective: 320px;
   perspective-origin: 3% 34%;
 }
+
 .room {
   background: rgba(0, 0, 0, 0.2);
   height: 100vh;
   transform-style: preserve-3d;
   transform: translateZ(0px) translateY(-100px);
 }
+
 .left {
   transform: rotateY(-337deg) translateZ(53px) translateX(-32px);
   text-align: center;
@@ -39,8 +45,17 @@
   width: 100%;
 }
 
-.nav-item.selected {
-  font-weight: bold;
+.nav {
+  .nav-item {
+    font-family: 'rockwell';
+    font-size: 22px;
+    display: block;
+    color: black;
+
+    &.selected {
+      font-weight: bold;
+    }
+  }
 }
 
 .piece-asset-container {
@@ -75,6 +90,16 @@
          display: block;
       }
     }
-
   }
+}
+
+.mobile {
+  display: none;
+
+  .height-full { height: auto; }
+  img { width: 100%; }
+}
+@media screen and (max-width: 414px) {
+  .scene { display: none; }
+  .mobile { display: block; }
 }

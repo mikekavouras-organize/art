@@ -1,9 +1,12 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
     <title>Art</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
+
+    <link rel="stylesheet" href="https://use.typekit.net/rtg4twp.css">
 
     <%= stylesheet_link_tag 'application', media: 'all' %>
     <%= javascript_pack_tag 'application', defer: true %>
@@ -24,5 +27,6 @@
         </div>
       </div>
     </div>
+    <%= yield :mobile %>
   </body>
 </html>

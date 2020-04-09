@@ -1,12 +1,8 @@
-<h1>Jennifer Boyd</h1>
-<% Category.all.each do |category| %>
-  <p>
+<div class="nav">
+  <h1>Jennifer Boyd</h1>
+  <% Category.all.each do |category| %>
     <a href="<%= category_path(category) %>" class="nav-item <%= "selected" if category.slug == params[:slug] %>"><%= category.name %></a>
-  </p>
-<% end %>
-<p>
+  <% end %>
   <a href="#" class="nav-item">Bio</a>
-</p>
-<p>
   <a href="#" class="nav-item">Contact</a>
-</p>
+</div>
