@@ -12,7 +12,7 @@
     <%= javascript_pack_tag 'application', defer: true %>
   </head>
 
-  <body>
+  <body class="tk-rockwell">
     <div class="scene" style="">
       <div class="room">
         <div class="left wall">
@@ -33,7 +33,7 @@
         <%= octicon "three-bars", width: 20 %>
       </div>
     </div>
-    <div class="mobile mobile-menu js-menu position-absolute bg-white width-full p-3 pb-4 border-bottom">
+    <div class="mobile mobile-menu js-menu position-absolute bg-white width-full px-3 border-bottom">
       <% Category.all.each do |category| %>
         <a href="<%= category_path(category) %>" class="nav-item <%= "selected" if category.slug == params[:slug] %>"><%= category.name %></a>
       <% end %>

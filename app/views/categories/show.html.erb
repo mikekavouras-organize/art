@@ -44,8 +44,9 @@
 
 <% content_for :mobile do %>
   <div class="mobile p-3">
+    <p class="f1 mb-6"><%= category.name %></p>
     <% assets.each do |asset| %>
-      <div>
+      <div class="mobile-asset">
         <% if asset.video? %>
           <video controls>
             <source src="<%= rails_blob_path(asset) %>" type="<%= asset.content_type %>">
@@ -53,8 +54,10 @@
         <% else %>
           <%= image_tag rails_blob_path(asset), class: "height-full" %>
         <% end %>
-        <h2><%= asset.title %></h2>
-        <p><%= asset.description %></h2>
+        <div class="text-center">
+          <p class="f5 mb-1"><%= asset.title %></h2>
+          <p class="text-gray-light"><%= asset.description %></h2>
+        </div>
       </div>
     <% end %>
   </div>

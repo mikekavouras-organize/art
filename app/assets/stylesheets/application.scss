@@ -1,10 +1,6 @@
 @import "@primer/css/index.scss";
 @import "./gallery";
 
-h1 {
-  font-family: 'rockwell';
-}
-
 .scene {
   perspective: 320px;
   perspective-origin: 3% 34%;
@@ -47,13 +43,12 @@ h1 {
 
 .nav {
   .nav-item {
-    font-family: 'rockwell';
     font-size: 22px;
     display: block;
     color: black;
 
     &.selected {
-      font-weight: bold;
+      color: #8e8e8e;
     }
   }
 }
@@ -93,29 +88,50 @@ h1 {
   }
 }
 
+.mobile {
+  display: none;
+
+  .height-full { height: auto; }
+  img { width: 100%; }
+}
+
+@media screen and (max-width: 414px) {
+  .scene { display: none; }
+  .mobile {
+    display: block;
+
+    &.mobile-header { display: flex; }
+  }
+}
+
 .mobile-menu {
   position: absolute;
   top: 0;
   overflow: auto;
-  white-space: nowrap;
+  height: 100vh;
   z-index: 2;
-  -webkit-overflow-scrolling: touch;
   transform: translateY(0);
-  opacity: 0;
-  transition-duration: 0.4s;
+  display: none;
+  padding-top: 92px;
 
   &.active {
-    transform: translateY(74px);
-    opacity: 1;
+    display: block;
   }
 
   a {
-    display: inline-block;
-    font-size: 22px;
+    display: block;
+    font-size: 32px;
     color: black;
-    font-family: 'rockwell';
-    margin-right: 20px;
+    margin-top: 20px;
+
+    &.selected {
+      color: #8e8e8e;
+    }
   }
+}
+
+.mobile-asset {
+  margin-bottom: 100px;
 }
 
 .overlay {
@@ -133,20 +149,3 @@ h1 {
     opacity: 1;
   }
 }
-
-.mobile {
-  display: none;
-
-  .height-full { height: auto; }
-  img { width: 100%; }
-}
-
-@media screen and (max-width: 414px) {
-  .scene { display: none; }
-  .mobile {
-    display: block;
-
-    &.mobile-header { display: flex; }
-  }
-}
-
