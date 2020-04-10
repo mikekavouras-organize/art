@@ -27,6 +27,19 @@
         </div>
       </div>
     </div>
+    <div class="mobile pl-3 pt-3 d-flex bg-white position-relative" style="z-index: 3;">
+      <h1 class="flex-auto">Jennifer Boyd</h1>
+      <div class="flex-items-center d-flex p-3 js-menu-toggle">
+        <%= octicon "three-bars", width: 20 %>
+      </div>
+    </div>
+    <div class="mobile mobile-menu js-menu position-absolute bg-white width-full p-3 pb-4 border-bottom">
+      <% Category.all.each do |category| %>
+        <a href="<%= category_path(category) %>" class="nav-item <%= "selected" if category.slug == params[:slug] %>"><%= category.name %></a>
+      <% end %>
+      <a href="#" class="nav-item">Bio</a>
+      <a href="#" class="nav-item">Contact</a>
+    </div>
     <%= yield :mobile %>
   </body>
 </html>

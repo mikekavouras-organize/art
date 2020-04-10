@@ -33,7 +33,6 @@ on('click', '.js-navigate-next', e => {
   e.preventDefault()
   currentAssetIdx++
   const assetId = assetIds[currentAssetIdx % assetIds.length]
-  console.log(assetId)
   doTheThing(assetId)
 })
 
@@ -42,6 +41,25 @@ on('click', '.js-navigate-previous', ({currentTarget}) => {
   if (currentAssetIdx < 0) currentAssetIdx = assetIds.length - 1
   const assetId = assetIds[currentAssetIdx % assetIds.length]
   doTheThing(assetId)
+})
+
+on('click', '.js-menu-toggle', function() {
+  const menu = document.querySelector('.js-menu')
+  if (menu.classList.contains('active')) {
+    menu.classList.remove('active')
+    const overlay = document.querySelectorAll('.js-overlay')
+    for (const o of overlay) {
+      o.classList.remove('visible')
+      setTimeout(function() { o.remove() }, 400)
+    }
+  } else {
+    menu.classList.add('active')
+    const overlay = document.createElement('div')
+    overlay.classList.add('overlay')
+    overlay.classList.add('js-overlay')
+    document.body.appendChild(overlay)
+    setTimeout(function() { overlay.classList.add('visible') }, 10);
+  }
 })
 
 while (!assetIds) {}
