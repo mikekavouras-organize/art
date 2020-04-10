@@ -93,11 +93,6 @@ h1 {
   }
 }
 
-@media screen and (max-width: 414px) {
-  .scene { display: none; }
-  .mobile { display: block; }
-}
-
 .mobile-menu {
   position: absolute;
   top: 0;
@@ -140,9 +135,18 @@ h1 {
 }
 
 .mobile {
-  display: none !important;
+  display: none;
 
   .height-full { height: auto; }
   img { width: 100%; }
+}
+
+@media screen and (max-width: 414px) {
+  .scene { display: none; }
+  .mobile {
+    display: block;
+
+    &.mobile-header { display: flex; }
+  }
 }
 
