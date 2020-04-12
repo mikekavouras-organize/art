@@ -21,7 +21,7 @@
 <% assets.each do |asset| %>
   <template class="js-asset-<%= asset.id %>">
     <div class="height-full js-piece d-flex flex-items-center">
-      <div class="js-asset-container piece-asset-container" style="border:2px solid red;">
+      <div class="js-asset-container piece-asset-container">
         <% if asset.video? %>
           <video controls poster="<%= asset.preview_url %>" class="height-full js-asset">
             <source src="<%= rails_blob_path(asset) %>" type="<%= asset.content_type %>">
