@@ -27,6 +27,10 @@ function doTheThing(assetId) {
   const newHeight = heightInt * ratio
   const newWidth = widthInt * ratio
   assetContainer.setAttribute('style', `width:${newWidth}px;height:${newHeight}px`)
+
+  const asset = assetContainer.querySelector('.js-asset')
+  asset.setAttribute('width', newWidth)
+  asset.setAttribute('height', newHeight)
 }
 
 on('click', '.js-navigate-next', e => {
