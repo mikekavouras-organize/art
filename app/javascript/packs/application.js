@@ -20,7 +20,7 @@ function doTheThing(assetId) {
   const assetContainer = newPiece.querySelector('.js-asset-container')
   const widthInt = parseInt(width)
   const heightInt = parseInt(height)
-  const maxHeight = 640
+  const maxHeight = window.innerHeight <= 1026 ? 500 : 640
   const maxWidth = 640
   const isVertical = widthInt < heightInt
   const ratio = isVertical ? maxHeight / heightInt :  maxWidth / widthInt
