@@ -23,7 +23,7 @@
     <div class="height-full js-piece d-flex flex-items-center">
       <div class="js-asset-container piece-asset-container" style="border:2px solid red;">
         <% if asset.video? %>
-          <video controls>
+          <video controls class="height-full">
             <source src="<%= rails_blob_path(asset) %>" type="<%= asset.content_type %>">
           </video>
         <% else %>
@@ -48,7 +48,7 @@
     <% assets.each do |asset| %>
       <div class="mobile-asset">
         <% if asset.video? %>
-          <video controls>
+          <video controls class="height-full">
             <source src="<%= rails_blob_path(asset) %>" type="<%= asset.content_type %>">
           </video>
         <% else %>
