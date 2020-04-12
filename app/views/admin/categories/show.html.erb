@@ -21,7 +21,11 @@
   <div class="d-flex">
     <% series.assets.each do |asset| %>
       <div style="flex: 3; padding: 10px;">
-        <%= image_tag rails_blob_path(asset), style: "width: 100%" %>
+        <% if asset.video? %>
+          <%= image_tag asset.preview_url, style: "width: 100%" %>
+        <% else %>
+          <%= image_tag rails_blob_path(asset), style: "width: 100%" %>
+        <% end %>
       </div>
     <% end %>
   </div>
