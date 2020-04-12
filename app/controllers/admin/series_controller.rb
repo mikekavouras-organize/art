@@ -41,7 +41,7 @@ module Admin
 
     def update_assets
       Admin::Series::UpdateAttachments.call(
-        series: series, 
+        series: series,
         attachables: asset_params.delete("assets"),
         preferred_order: asset_params.delete("ordered_ids").split(",")
       )

@@ -23,7 +23,7 @@
     <div class="height-full js-piece d-flex flex-items-center">
       <div class="js-asset-container piece-asset-container" style="border:2px solid red;">
         <% if asset.video? %>
-          <video controls class="height-full js-asset">
+          <video controls poster="<%= asset.preview_url %>" class="height-full js-asset">
             <source src="<%= rails_blob_path(asset) %>" type="<%= asset.content_type %>">
           </video>
         <% else %>
