@@ -48,11 +48,11 @@
     <% assets.each do |asset| %>
       <div class="mobile-asset">
         <% if asset.video? %>
-          <video controls class="height-full">
+          <video controls>
             <source src="<%= rails_blob_path(asset) %>" type="<%= asset.content_type %>">
           </video>
         <% else %>
-          <%= image_tag rails_blob_path(asset), class: "height-full" %>
+          <%= image_tag rails_blob_path(asset) %>
         <% end %>
         <div class="text-center">
           <p class="f5 mb-1"><%= asset.title %></h2>
