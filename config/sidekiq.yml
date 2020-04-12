@@ -1,0 +1,3 @@
+:queues:
+  - active_storage_analysis
+  - default
