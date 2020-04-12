@@ -28,6 +28,7 @@ module Admin
         else
           update_positions
         end
+
         series.save!
       end
 
@@ -62,7 +63,11 @@ module Admin
       end
 
       def new_attachments?
-        attachables.any? { |attachable| attachable.is_a?(attachable_class) }
+        new_attachments.any?
+      end
+
+      def new_attachments
+        attachables.select { |attachable| attachable.is_a?(attachable_class) }
       end
 
       def attachable_class
