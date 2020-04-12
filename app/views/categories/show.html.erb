@@ -48,7 +48,7 @@
     <% assets.each do |asset| %>
       <div class="mobile-asset">
         <% if asset.video? %>
-          <video controls>
+          <video controls poster="<%= asset.preview_url %>">
             <source src="<%= rails_blob_path(asset) %>" type="<%= asset.content_type %>">
           </video>
         <% else %>
