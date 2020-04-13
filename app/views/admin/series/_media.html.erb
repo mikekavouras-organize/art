@@ -17,7 +17,7 @@
         <% if asset.video? %>
           <%= image_tag asset.preview_url, style: "max-height: 70px; display: block;" %>
         <% else %>
-          <%= image_tag rails_blob_url(asset.preview_url), style: "max-height: 70px; display: block;" %>
+          <%= image_tag rails_blob_url(asset.blob), style: "max-height: 70px; display: block;" %>
         <% end %>
       </div>
       <div class="d-flex flex-items-center flex-justify-center">

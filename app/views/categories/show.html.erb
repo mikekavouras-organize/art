@@ -29,11 +29,11 @@
         <% else %>
           <%= image_tag rails_blob_path(asset), class: "height-full js-asset" %>
         <% end %>
-        <div class="hover-sign d-flex flex-justify-center flex-items-center">
+        <div class="hover-sign d-flex flex-justify-center flex-items-center js-hover-sign">
           <%= octicon "grabber" %>
-          <div class="piece-details">
+          <div class="piece-details js-piece-details" hidden>
             <p class="mb-0"><%= asset.title %></p>
-            <span class="description"><%= asset.description %></span>
+            <%= simple_format(asset.description) %>
           </div>
         </div>
       </div>

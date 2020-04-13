@@ -58,5 +58,32 @@ on('click', '.js-menu-toggle', function() {
   }
 })
 
+const onMouseEnter = event => {
+  const { clientX, clientY, currentTarget } = event
+  const details = currentTarget.querySelector('.js-piece-details').cloneNode(true)
+  details.removeAttribute('hidden')
+  document.body.appendChild(details)
+  details.style.left = `${clientX - 310 - (clientX - currentTarget.getBoundingClientRect().left)}px`
+  details.style.top = `${clientY - details.offsetHeight - 10}px`
+}
+
+const onMouseLeave = event => {
+  const nodes = document.querySelectorAll('.js-piece-details')
+  const array = Array.from(nodes)
+  const visible = array.filter(node => !node.hasAttribute('hidden'))
+  visible[0].remove()
+}
+
+observe('.js-hover-sign', {
+  add: elem => {
+    elem.addEventListener('mouseenter', onMouseEnter)
+    elem.addEventListener('mouseleave', onMouseLeave)
+  },
+  remove: elem => {
+    elem.removeEventListener('mouseenter', onMouseEnter)
+    elem.removeEventListener('mouseleave', onMouseLeave)
+  }
+})
+
 while (!assetIds) {}
 doTheThing(assetIds[0])
