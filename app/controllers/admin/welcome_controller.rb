@@ -6,7 +6,8 @@ module Admin
 
     def index
       render "admin/welcome/index", locals: {
-        categories: Category.all
+        categories: Category.all,
+        info: ArtistInfo.last || ArtistInfo.new
       }
     end
   end

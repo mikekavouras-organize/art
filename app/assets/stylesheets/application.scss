@@ -1,6 +1,10 @@
 @import "@primer/css/index.scss";
 @import "./gallery";
 
+h1 {
+  font-size: 26px;
+}
+
 .scene {
   perspective: 320px;
   perspective-origin: 3% 34%;
@@ -35,6 +39,7 @@
   margin-left: 289px;
   width: calc(100% - 287px);
   background-color: white;
+  padding-top: 98px;
 }
 
 .width-full {

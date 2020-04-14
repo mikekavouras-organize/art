@@ -3,9 +3,12 @@ Rails.application.routes.draw do
 
   resources :categories, param: :slug
 
+  get "/info", to: "info#index", as: :info
+
   namespace :admin do
     root to: "welcome#index"
     resources :sessions, only: [:new, :create]
+    resources :artist_infos, only: [:create, :update]
     resources :categories, except: :index, param: :slug do
       resources :series, except: :show do
         resources :assets, only: [:edit, :update]
