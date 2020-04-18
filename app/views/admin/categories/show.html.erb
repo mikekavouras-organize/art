@@ -18,9 +18,9 @@
 <% category.series.each do |series| %>
   <h2><%= link_to series.title, edit_admin_category_series_path(category, series) %></h2>
   <p><%= series.description %></p>
-  <div class="d-flex">
+  <div class="d-flex" style="flex-wrap: wrap">
     <% series.assets.each do |asset| %>
-      <div style="flex: 3; padding: 10px;">
+      <div style="padding: 10px; width: 100px;">
         <% if asset.video? %>
           <%= image_tag asset.preview_url, style: "width: 100%" %>
         <% else %>
