@@ -22,7 +22,7 @@ jobs:
       - name: Set up Ruby for the liberation of the people
         uses: actions/setup-ruby@v1
         with:
-          ruby-version: 2.7.x
+          ruby-version: 2.7.0
 
       - name: Install yarn
         run: |
