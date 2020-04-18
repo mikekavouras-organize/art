@@ -1,6 +1,6 @@
 <div class="nav">
   <h1>JENNIFER BOYD</h1>
-  <% Category.all.each do |category| %>
+  <% Category.all.order(position: :asc).each do |category| %>
     <a href="<%= category_path(category) %>" class="nav-item <%= "selected" if category.slug == params[:slug] %>">
       <%= category.name.downcase %>
     </a>
