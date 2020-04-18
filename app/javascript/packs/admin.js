@@ -20,7 +20,8 @@ const preloadImages = (images, onLoad) => {
 
 const sendForm = async form => {
   const formData = new FormData(form)
-  const method = form.querySelector('[name=_method]').value
+  const method = form.method
+
   return await fetch(form.action, {
     method: method.toUpperCase(),
     headers: { "X-Requested-With": "XMLHttpRequest" },
@@ -45,9 +46,9 @@ observe('.js-file-input', {
   }
 })
 
-observe('.js-sortable', {
+observe('.js-sortable-media', {
   add(el) {
-    const sortObject = sortable('.js-sortable', {
+    const sortObject = sortable('.js-sortable-media', {
       forcePlaceholderSize: true,
       placeholderClass: 'sortable-placeholder',
       items: '.js-sortable-item',
@@ -64,6 +65,24 @@ observe('.js-sortable', {
   }
 })
 
+observe('.js-sortable-categories', {
+  add(el) {
+    const sortObject = sortable('.js-sortable-categories', {
+      forcePlaceholderSize: true,
+      placeholderClass: 'sortable-placeholder',
+      items: '.js-sortable-item',
+      handle: '.handle'
+    })
+
+    sortObject[0].addEventListener('sortupdate', function(event) {
+      const items = event.target.querySelectorAll('.js-sortable-item')
+      const ids = Array.from(items).map(item => item.getAttribute('data-id'))
+      const input = document.querySelector('.js-category-positions')
+      input.value = ids.join(',')
+      sendForm(input.form)
+    })
+  }
+})
 
 on('click', '.js-series-delete', event => {
   let { currentTarget } = event

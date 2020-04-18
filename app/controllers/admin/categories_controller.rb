@@ -18,7 +18,9 @@ module Admin
     end
 
     def create
-      Category.create(category_params)
+      category = Category.new(category_params)
+      category.position = Category.count
+      category.save
       redirect_to admin_root_path
     end
 

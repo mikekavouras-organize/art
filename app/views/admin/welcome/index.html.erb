@@ -4,10 +4,19 @@
     <%= octicon "plus-small", style: "margin-top:1px;" %> New
   <% end %>
 </div>
-<% categories.each do |category| %>
-  <p class="f3">
-    <a href="<%= admin_category_path(category) %>"><%= category.name %></a>
-  </p>
+<div class="js-sortable-categories sortable">
+  <% categories.each do |category| %>
+    <div class="f3 js-sortable-item" style="display:flex" data-id="<%= category.id %>">
+      <a class="d-inline-block flex-auto" href="<%= admin_category_path(category) %>"><%= category.name %></a>
+      <span class="handle d-flex flex-items-center flex-justify-center p-2">
+        <%= octicon "grabber", width: 12 %>
+      </span>
+    </div>
+  <% end %>
+</div>
+
+<%= form_tag(admin_welcome_update_category_positions_path, method: :post, hidden: true) do |f| %>
+  <input class="js-category-positions" type="text" name="positions" value="<%= categories.map(&:id).join(",") %>">
 <% end %>
 
 <hr>
