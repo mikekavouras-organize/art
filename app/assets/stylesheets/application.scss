@@ -18,7 +18,7 @@ h1 {
 }
 
 .left {
-  transform: rotateY(-337deg) translateZ(53px) translateX(-32px);
+  transform: rotateY(-337deg) translate3d(-33px, -2px, 53px);
   text-align: center;
   background-color: white;
   width: 310px !important;
