@@ -4,7 +4,7 @@
     <%= octicon "plus-small", style: "margin-top:1px;" %> New
   <% end %>
 </div>
-<div class="js-sortable-categories sortable">
+<div class="js-sortable sortable">
   <% categories.each do |category| %>
     <div class="f3 js-sortable-item" style="display:flex" data-id="<%= category.id %>">
       <a class="d-inline-block flex-auto" href="<%= admin_category_path(category) %>"><%= category.name %></a>
@@ -16,7 +16,7 @@
 </div>
 
 <%= form_tag(admin_welcome_update_category_positions_path, method: :post, hidden: true) do |f| %>
-  <input class="js-category-positions" type="text" name="positions" value="<%= categories.map(&:id).join(",") %>">
+  <input class="js-positions" type="text" name="positions" value="<%= categories.map(&:id).join(",") %>">
 <% end %>
 
 <hr>

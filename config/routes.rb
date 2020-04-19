@@ -14,6 +14,7 @@ Rails.application.routes.draw do
     resources :artist_infos, only: [:create, :update]
     resources :categories, except: :index, param: :slug do
       post :update_positions, to: "categories#update_positions", as: "update_positions"
+      post :update_series_positions, to: "categories#update_series_positions", as: "update_series_positions"
       resources :series, except: :show do
         resources :assets, only: [:edit, :update]
       end

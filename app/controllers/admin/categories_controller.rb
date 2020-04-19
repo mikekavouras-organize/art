@@ -41,6 +41,18 @@ module Admin
       end
     end
 
+    def update_series_positions
+      series_ids = params.delete("positions").split(",")
+
+      case_string = "position = CASE id "
+      series_ids.each.with_index do |id, index|
+        case_string += "WHEN #{id} THEN #{index} "
+      end
+      case_string += "END"
+
+      ::Series.where(id: series_ids).update_all(case_string)
+    end
+
     def destroy
       name = category.name
       category.destroy
@@ -56,6 +68,7 @@ module Admin
 
     def category
       @category ||= Category.includes(series: { assets_attachments: :blob })
+        .order("series.position asc")
         .find_by(slug: params[:slug])
     end
 

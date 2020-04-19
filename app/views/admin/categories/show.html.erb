@@ -15,18 +15,30 @@
     <% end %>
   </div>
 </div>
-<% category.series.each do |series| %>
-  <h2><%= link_to series.title, edit_admin_category_series_path(category, series) %></h2>
-  <p><%= series.description %></p>
-  <div class="d-flex" style="flex-wrap: wrap">
-    <% series.assets.each do |asset| %>
-      <div style="padding: 10px; width: 100px;">
-        <% if asset.video? %>
-          <%= image_tag asset.preview_url, style: "width: 100%" %>
-        <% else %>
-          <%= image_tag rails_blob_path(asset), style: "width: 100%" %>
+<%= form_tag admin_category_update_series_positions_path(category), method: :post, hidden: true do |f| %>
+  <input type="hidden" value="<%= category.series.map(&:id).join(",") %>" class="js-positions" name="positions">
+<% end %>
+<div class="js-sortable sortable">
+  <% category.series.each do |series| %>
+    <div class="js-sortable-item sortable-item" data-id="<%= series.id %>">
+      <div style="display: flex;">
+        <h2 class="flex-auto"><%= link_to series.title, edit_admin_category_series_path(category, series) %></h2>
+        <span class="handle d-flex flex-items-center flex-justify-center p-2">
+          <%= octicon "grabber", width: 12 %>
+        </span>
+      </div>
+      <p><%= series.description %></p>
+      <div class="d-flex" style="flex-wrap: wrap">
+        <% series.assets.each do |asset| %>
+          <div style="padding: 10px; width: 100px;">
+            <% if asset.video? %>
+              <%= image_tag asset.preview_url, style: "width: 100%" %>
+            <% else %>
+              <%= image_tag rails_blob_path(asset), style: "width: 100%" %>
+            <% end %>
+          </div>
         <% end %>
       </div>
-    <% end %>
-  </div>
-<% end %>
+    </div>
+  <% end %>
+</div>

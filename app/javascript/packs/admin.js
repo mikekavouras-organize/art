@@ -46,38 +46,19 @@ observe('.js-file-input', {
   }
 })
 
-observe('.js-sortable-media', {
+observe('.js-sortable', {
   add(el) {
-    const sortObject = sortable('.js-sortable-media', {
+    const sortObject = sortable('.js-sortable', {
       forcePlaceholderSize: true,
       placeholderClass: 'sortable-placeholder',
       items: '.js-sortable-item',
       handle: '.handle'
-    })
+    })[0]
 
-    sortObject[0].addEventListener('sortupdate', function(event) {
+    sortObject.addEventListener('sortupdate', function(event) {
       const items = event.target.querySelectorAll('.js-sortable-item')
       const ids = Array.from(items).map(item => item.getAttribute('data-id'))
-      const input = document.querySelector('.js-ordered-media-ids')
-      input.value = ids.join(',')
-      sendForm(input.form)
-    })
-  }
-})
-
-observe('.js-sortable-categories', {
-  add(el) {
-    const sortObject = sortable('.js-sortable-categories', {
-      forcePlaceholderSize: true,
-      placeholderClass: 'sortable-placeholder',
-      items: '.js-sortable-item',
-      handle: '.handle'
-    })
-
-    sortObject[0].addEventListener('sortupdate', function(event) {
-      const items = event.target.querySelectorAll('.js-sortable-item')
-      const ids = Array.from(items).map(item => item.getAttribute('data-id'))
-      const input = document.querySelector('.js-category-positions')
+      const input = document.querySelector('.js-positions')
       input.value = ids.join(',')
       sendForm(input.form)
     })

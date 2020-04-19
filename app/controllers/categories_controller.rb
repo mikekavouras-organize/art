@@ -13,6 +13,7 @@ class CategoriesController < ApplicationController
 
   def category
     @category ||= Category.includes(series: { assets_attachments: :blob })
+      .order("series.position asc")
       .find_by(slug: params[:slug])
   end
 
