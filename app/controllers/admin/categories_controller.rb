@@ -21,7 +21,7 @@ module Admin
       category = Category.new(category_params)
       category.position = Category.count
       category.save
-      redirect_to admin_root_path
+      redirect_to admin_category_path(category)
     end
 
     def edit

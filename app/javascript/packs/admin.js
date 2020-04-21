@@ -32,7 +32,14 @@ const sendForm = async form => {
 observe('.js-file-input', {
   add(input) {
     input.addEventListener('change', async event => {
+      console.log('sending')
+      document.querySelector('.js-add-media-btn').classList.add('disabled')
+      document.querySelector('.js-new-media-loader').style.display = 'block'
+
       const response = await sendForm(input.form)
+
+      document.querySelector('.js-add-media-btn').classList.remove('disabled')
+      document.querySelector('.js-new-media-loader').style.display = 'none'
       const html = await response.text()
       const div = document.createElement('div')
       div.classList.add('js-media-form')

@@ -1,7 +1,10 @@
 <%= form_with model: model, url: admin_category_batch_asset_update_path, method: :patch, multipart: true do |form| %>
   <div class="form-group d-flex flex-items-center">
     <p style="font-weight: 600" class="flex-auto mb-0">Media</p>
-    <label for="series_assets" class="btn btn-sm"><%= octicon "plus-small" %> Add</label>
+    <div class="d-flex flex-items-center flex-justify-center">
+      <div class="loader mr-3 js-new-media-loader"></div>
+      <label for="series_assets" class="btn btn-sm js-add-media-btn"><%= octicon "plus-small" %> Add</label>
+    </div>
   </div>
   <div class="clearfix"></div>
   <%= form.file_field :assets, multiple: true, class: "file-input js-file-input" %>
