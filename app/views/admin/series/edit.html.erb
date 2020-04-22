@@ -6,5 +6,17 @@
   </ol>
 </nav>
 <hr>
-<h1><%= series.title %></h1>
+<div class="d-flex flex-items-center">
+  <h1 class="flex-auto">
+    <%= series.title %>
+  </h1>
+  <%= form_tag admin_category_series_path, method: :delete %>
+    <input type="hidden" name="id" value="<%= series.id %>">
+    <button type="button" 
+            class="btn btn-sm btn-danger js-series-delete"
+            data-title="<%= series.title %>">
+      <%= octicon "trashcan" %>
+    </button>
+  </form>
+</div>
 <%= render partial: "admin/series/form", locals: { method: :patch, model: series, assets: assets } %>

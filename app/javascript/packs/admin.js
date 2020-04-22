@@ -68,10 +68,19 @@ observe('.js-sortable', {
   }
 })
 
-on('click', '.js-series-delete', event => {
+on('click', '.js-media-delete', event => {
   let { currentTarget } = event
   let form = currentTarget.parentNode
   if (confirm("Delete this media?")) {
+    form.submit()
+  }
+});
+
+on('click', '.js-series-delete', event => {
+  let { currentTarget } = event
+  let form = currentTarget.parentNode
+  let title = currentTarget.getAttribute('data-title')
+  if (confirm(`Are you sure you want to delete "${title}"`)) {
     form.submit()
   }
 });

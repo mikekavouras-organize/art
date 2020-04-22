@@ -52,6 +52,11 @@ module Admin
       }
     end
 
+    def destroy
+      series.destroy
+      redirect_to admin_category_path(category)
+    end
+
     def delete_asset
       asset.purge
       redirect_to edit_admin_category_series_path(category, series)

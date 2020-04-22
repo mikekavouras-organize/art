@@ -25,9 +25,9 @@
       </div>
       <div class="d-flex flex-items-center flex-justify-center">
         <%= form_with model: model, url: admin_category_series_asset_delete_path(asset_id: asset), method: :delete do |form| %>
-          <div class="trashcan js-series-delete btn btn-sm btn-danger" style="padding-left:6px;padding-right:6px;">
+          <button type="button" class="trashcan js-media-delete btn btn-sm btn-danger px-2">
             <%= octicon "trashcan", width: 12 %>
-          </div>
+          </button>
         <% end %>
       </div>
       <div class="d-flex flex-items-center flex-justify-center p-2">
