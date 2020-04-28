@@ -5,6 +5,17 @@ h1 {
   font-size: 26px;
 }
 
+.sans-serif {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 400;
+}
+
+.piece-details {
+  p {
+    margin-bottom: 0;
+  }
+}
+
 .scene {
   perspective: 320px;
   perspective-origin: 3% 34%;

@@ -1,5 +1,13 @@
 <div class="d-flex flex-items-center flex-justify-center height-full">
-  <div>
+  <div class="sans-serif">
     <%= simple_format(info.bio) %>
   </div>
 </div>
+
+<% content_for :mobile do %>
+  <div class="d-flex flex-items-center flex-justify-center height-full">
+    <div class="sans-serif">
+      <%= simple_format(info.bio) %>
+    </div>
+  </div>
+<% end %>
