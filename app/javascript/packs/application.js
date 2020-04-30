@@ -1,7 +1,7 @@
 import {observe} from 'selector-observer'
 import {on} from 'delegated-events'
 
-function doTheThing(assetId) {
+function showAsset(assetId) {
   const template = document.querySelector(`.js-asset-${assetId}`)
   const content = template.content.cloneNode(true)
   const newPiece = content.querySelector('.js-piece')
@@ -33,19 +33,37 @@ function doTheThing(assetId) {
   asset.setAttribute('height', newHeight)
 }
 
-on('click', '.js-navigate-next', e => {
-  e.preventDefault()
-  currentAssetIdx++
-  const assetId = assetIds[currentAssetIdx % assetIds.length]
-  doTheThing(assetId)
-})
-
-on('click', '.js-navigate-previous', ({currentTarget}) => {
+function showPreviousAsset() {
   currentAssetIdx--
   if (currentAssetIdx < 0) currentAssetIdx = assetIds.length - 1
   const assetId = assetIds[currentAssetIdx % assetIds.length]
-  doTheThing(assetId)
+  showAsset(assetId)
+}
+
+function showNextAsset() {
+  currentAssetIdx++
+  const assetId = assetIds[currentAssetIdx % assetIds.length]
+  showAsset(assetId)
+}
+
+on('click', '.js-navigate-next', e => {
+  showNextAsset()
 })
+
+on('click', '.js-navigate-previous', ({currentTarget}) => {
+  showPreviousAsset()
+})
+
+document.addEventListener('keyup', (e) => {
+  switch(e.key) {
+    case "ArrowRight":
+      showNextAsset();
+      break;
+    case "ArrowLeft":
+      showPreviousAsset()
+      break;
+  }
+}, false)
 
 on('click', '.js-menu-toggle', function() {
   const menu = document.querySelector('.js-menu')
@@ -86,4 +104,4 @@ observe('.js-hover-sign', {
 })
 
 while (!assetIds) {}
-doTheThing(assetIds[0])
+showAsset(assetIds[0])
