@@ -12,12 +12,13 @@ class CategoriesController < ApplicationController
   private
 
   def category
-    @category ||= Category.includes(series: { assets_attachments: :blob })
+    @category ||= Category
+      .includes(series: { assets_attachments: :blob })
       .order("series.position asc")
       .find_by(slug: params[:slug])
   end
 
   def assets
-    category.series.map(&:assets).flatten
+    category.series.map { |s| s.assets.sort_by(&:position) }.flatten
   end
 end
