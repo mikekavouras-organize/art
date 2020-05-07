@@ -7,7 +7,7 @@ module ActiveStorageAttachmentExtension
     after_create :process_video_preview
   end
 
-  LIMIT_SIZE = [640, 1500].freeze
+  LIMIT_SIZE = [640, 640].freeze
 
   def title
     self[:title] || self.record.title
@@ -18,7 +18,7 @@ module ActiveStorageAttachmentExtension
   end
 
   def preview_url
-    self.preview(resize_to_fit: [640, nil]).processed.service_url
+    self.preview(resize_to_limit: LIMIT_SIZE).processed.service_url
   rescue URI::InvalidURIError
     "https://images.pexels.com/photos/1108099/pexels-photo-1108099.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
   end
