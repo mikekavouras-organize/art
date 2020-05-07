@@ -32,7 +32,7 @@
         <div class="hover-sign d-flex flex-justify-center flex-items-center js-hover-sign">
           <%= octicon "grabber" %>
           <div class="piece-details js-piece-details sans-serif" hidden>
-            <p class="mb-0"><%= asset.title %></p>
+            <div class="mb-1"><%= render_markdown(asset.title).html_safe %></div>
             <%= simple_format(asset.description) %>
           </div>
         </div>
@@ -55,7 +55,7 @@
           <%= image_tag rails_blob_path(asset) %>
         <% end %>
         <div class="text-center">
-          <p class="f5 mb-1"><%= asset.title %></h2>
+          <p class="f5 mb-1"><%= render_markdown(asset.title) %></h2>
           <p class="text-gray-light"><%= asset.description %></h2>
         </div>
       </div>

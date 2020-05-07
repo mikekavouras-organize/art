@@ -27,6 +27,7 @@ gem 'image_processing', '~> 1.2'
 gem 'bootsnap', '>= 1.4.2', require: false
 gem "aws-sdk-s3", require: false
 gem 'octicons_helper'
+gem 'redcarpet'
 
 gem 'sidekiq'
 
