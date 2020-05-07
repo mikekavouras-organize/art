@@ -82,7 +82,9 @@ function hideArtDescription() {
   const nodes = document.querySelectorAll('.js-piece-details')
   const array = Array.from(nodes)
   const visible = array.filter(node => !node.hasAttribute('hidden'))
-  visible[0].remove()
+  if (visible[0]) {
+    visible[0].remove()
+  }
 }
 
 const onMouseEnter = event => {
