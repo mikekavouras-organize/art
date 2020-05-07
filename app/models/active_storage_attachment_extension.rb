@@ -7,7 +7,7 @@ module ActiveStorageAttachmentExtension
     after_create :process_video_preview
   end
 
-  LIMIT_SIZE = [640, 640].freeze
+  LIMIT_SIZE = [640, 1500].freeze
 
   def title
     self[:title] || self.record.title
