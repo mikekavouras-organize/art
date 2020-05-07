@@ -2,6 +2,8 @@ import {observe} from 'selector-observer'
 import {on} from 'delegated-events'
 
 function showAsset(assetId) {
+  hideArtDescription()
+
   const template = document.querySelector(`.js-asset-${assetId}`)
   const content = template.content.cloneNode(true)
   const newPiece = content.querySelector('.js-piece')
@@ -76,6 +78,13 @@ on('click', '.js-menu-toggle', function() {
   }
 })
 
+function hideArtDescription() {
+  const nodes = document.querySelectorAll('.js-piece-details')
+  const array = Array.from(nodes)
+  const visible = array.filter(node => !node.hasAttribute('hidden'))
+  visible[0].remove()
+}
+
 const onMouseEnter = event => {
   const { clientX, clientY, currentTarget } = event
   const details = currentTarget.querySelector('.js-piece-details').cloneNode(true)
@@ -85,11 +94,8 @@ const onMouseEnter = event => {
   details.style.top = `${clientY - details.offsetHeight - 10}px`
 }
 
-const onMouseLeave = event => {
-  const nodes = document.querySelectorAll('.js-piece-details')
-  const array = Array.from(nodes)
-  const visible = array.filter(node => !node.hasAttribute('hidden'))
-  visible[0].remove()
+const onMouseLeave = () => {
+  hideArtDescription()
 }
 
 observe('.js-hover-sign', {
