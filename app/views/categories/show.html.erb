@@ -30,7 +30,11 @@
           <%= image_tag rails_blob_path(asset), class: "height-full js-asset" %>
         <% end %>
         <div class="hover-sign d-flex flex-justify-center flex-items-center js-hover-sign">
-          <%= octicon "grabber" %>
+          <svg height="100%" width="100%">
+            <line x1="4" y1="7" x2="50" y2="7" style="stroke: black;"></line>
+            <line x1="4" y1="14" x2="50" y2="14" style="stroke: black;"></line>
+            <line x1="4" y1="21" x2="50" y2="21" style="stroke: black;"></line>
+          </svg>
           <div class="piece-details js-piece-details sans-serif" hidden>
             <div class="mb-1"><%= render_markdown(asset.title).html_safe %></div>
             <%= simple_format(asset.description) %>

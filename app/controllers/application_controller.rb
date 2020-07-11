@@ -6,6 +6,7 @@ class ApplicationController < ActionController::Base
   def logged_in?
     !current_user.nil?
   end
+  helper_method :logged_in?
 
   def authenticate
     unless logged_in?

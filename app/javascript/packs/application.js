@@ -7,8 +7,6 @@ function showAsset(assetId) {
   const template = document.querySelector(`.js-asset-${assetId}`)
   const content = template.content.cloneNode(true)
   const newPiece = content.querySelector('.js-piece')
-  const visiblePiece = document.querySelector('.js-visible-piece')
-  visiblePiece.querySelector('.js-visible-piece-content').replaceWith(newPiece)
 
   newPiece.classList.remove('js-piece')
   newPiece.classList.add('js-visible-piece-content')
@@ -33,6 +31,9 @@ function showAsset(assetId) {
   const asset = assetContainer.querySelector('.js-asset')
   asset.setAttribute('width', newWidth)
   asset.setAttribute('height', newHeight)
+
+  const visiblePiece = document.querySelector('.js-visible-piece')
+  visiblePiece.querySelector('.js-visible-piece-content').replaceWith(newPiece)
 }
 
 function showPreviousAsset() {
@@ -111,5 +112,4 @@ observe('.js-hover-sign', {
   }
 })
 
-while (!assetIds) {}
 showAsset(assetIds[0])
