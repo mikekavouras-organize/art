@@ -112,4 +112,25 @@ observe('.js-hover-sign', {
   }
 })
 
+const onFullScreen = e => {
+  if (document.webkitIsFullScreen) {
+    document.querySelector('.left.wall').classList.add('d-none')
+  } else {
+    document.querySelector('.left.wall').classList.remove('d-none')
+  }
+}
+
+observe('video', { 
+  add: elem => {
+    elem.addEventListener('webkitfullscreenchange', onFullScreen)
+    elem.addEventListener('mozfullscreenchange', onFullScreen)
+    elem.addEventListener('fullscreenchange', onFullScreen)
+  },
+  remove: elem => {
+    elem.removeEventListener('webkitfullscreenchange', onFullScreen)
+    elem.removeEventListener('mozfullscreenchange', onFullScreen)
+    elem.removeEventListener('fullscreenchange', onFullScreen)
+  }
+})
+
 showAsset(assetIds[0])
