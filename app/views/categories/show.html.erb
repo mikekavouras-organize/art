@@ -27,7 +27,7 @@
             <source src="<%= rails_blob_path(asset) %>" type="<%= asset.content_type %>">
           </video>
         <% else %>
-          <%= image_tag rails_blob_path(asset), class: "height-full js-asset" %>
+          <%= image_tag rails_blob_path(asset), class: "height-full js-asset image" %>
         <% end %>
         <div class="hover-sign d-flex flex-justify-center flex-items-center js-hover-sign">
           <svg height="100%" width="100%">

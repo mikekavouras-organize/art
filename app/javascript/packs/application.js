@@ -1,6 +1,16 @@
 import {observe} from 'selector-observer'
 import {on} from 'delegated-events'
 
+let previewing = false
+
+const resize = (width, height, maxWidth, maxHeight) => {
+  const isVertical = width < height
+  const ratio = isVertical ? maxHeight / height :  maxWidth / width
+  const newHeight = height * ratio
+  const newWidth = width * ratio
+  return [newWidth, newHeight]
+}
+
 function showAsset(assetId) {
   hideArtDescription()
 
@@ -20,12 +30,15 @@ function showAsset(assetId) {
   const assetContainer = newPiece.querySelector('.js-asset-container')
   const widthInt = parseInt(width)
   const heightInt = parseInt(height)
-  const maxHeight = window.innerHeight <= 1026 ? 500 : 640
-  const maxWidth = 640
-  const isVertical = widthInt < heightInt
-  const ratio = isVertical ? maxHeight / heightInt :  maxWidth / widthInt
-  const newHeight = heightInt * ratio
-  const newWidth = widthInt * ratio
+  let maxHeight = 0
+  if (window.innerHeight < 800) {
+    maxHeight = 400
+  } else if (window.innerHeight <= 1026) {
+    maxHeight = 500
+  } else {
+    maxHeight = 640
+  }
+  const [newWidth, newHeight] = resize(widthInt, heightInt, 640, maxHeight)
   assetContainer.setAttribute('style', `width:${newWidth}px;height:${newHeight}px`)
 
   const asset = assetContainer.querySelector('.js-asset')
@@ -37,6 +50,7 @@ function showAsset(assetId) {
 }
 
 function showPreviousAsset() {
+  if (previewing) return
   currentAssetIdx--
   if (currentAssetIdx < 0) currentAssetIdx = assetIds.length - 1
   const assetId = assetIds[currentAssetIdx % assetIds.length]
@@ -44,6 +58,7 @@ function showPreviousAsset() {
 }
 
 function showNextAsset() {
+  if (previewing) return
   currentAssetIdx++
   const assetId = assetIds[currentAssetIdx % assetIds.length]
   showAsset(assetId)
@@ -64,6 +79,14 @@ document.addEventListener('keyup', (e) => {
       break;
     case "ArrowLeft":
       showPreviousAsset()
+      break;
+    case "Escape":
+      hidePreview()
+      break;
+    case " ":
+      const original = document.querySelector('.js-asset-container').querySelector('img')
+      if (!original) return
+      showPreview(original)
       break;
   }
 }, false)
@@ -120,7 +143,7 @@ const onFullScreen = e => {
   }
 }
 
-observe('video', { 
+observe('video', {
   add: elem => {
     elem.addEventListener('webkitfullscreenchange', onFullScreen)
     elem.addEventListener('mozfullscreenchange', onFullScreen)
@@ -131,6 +154,48 @@ observe('video', {
     elem.removeEventListener('mozfullscreenchange', onFullScreen)
     elem.removeEventListener('fullscreenchange', onFullScreen)
   }
+})
+
+const hidePreview = () => {
+  if (!previewing) return
+  const zoomContainer = document.querySelector('.js-zoom-container')
+  if (zoomContainer) {
+    zoomContainer.remove()
+  }
+  previewing = false
+}
+
+const showPreview = (original) => {
+  if (previewing) return
+  previewing = true
+  const clone = original.cloneNode()
+
+  const container = document.createElement('div')
+  container.classList.add('zoom-container', 'js-zoom-container')
+
+  clone.classList.remove('height-full')
+  clone.classList.add('zoomed', 'js-zoomed')
+  const [width, height] = resize(
+    original.naturalWidth,
+    original.naturalHeight,
+    window.innerWidth * 0.8,
+    window.innerHeight * 0.8
+  )
+  clone.setAttribute('width', width)
+  clone.setAttribute('height', height)
+  container.appendChild(clone)
+
+  document.body.appendChild(container)
+}
+
+on('click', '.js-zoom-container', ({target}) => {
+  if (target.classList.contains('image')) return
+  hidePreview()
+})
+
+on('click', '.js-asset.image', ({target}) => {
+  if (target.classList.contains('js-zoomed')) return
+  showPreview(target)
 })
 
 showAsset(assetIds[0])
