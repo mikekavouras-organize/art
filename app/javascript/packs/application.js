@@ -190,7 +190,6 @@ const showPreview = (original) => {
 }
 
 on('click', '.js-zoom-container', ({target}) => {
-  if (target.classList.contains('image')) return
   hidePreview()
 })
 
