@@ -13,8 +13,6 @@ Rails.application.configure do
   # Show full error reports.
   config.consider_all_requests_local = true
 
-  config.hosts << "michaelartdotcom.ngrok.io"
-
   config.to_prepare do
     ActiveStorage::Attachment.include ActiveStorageAttachmentExtension
   end

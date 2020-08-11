@@ -6,7 +6,7 @@ class User < ApplicationRecord
   validates :username,
     inclusion: {
       in: WHITELISTED_USERNAMES,
-      message: "%{value} is not a valid username" 
+      message: "%{value} is not a valid username"
     },
     uniqueness: true
 end

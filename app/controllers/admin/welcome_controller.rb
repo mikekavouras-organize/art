@@ -7,7 +7,8 @@ module Admin
     def index
       render "admin/welcome/index", locals: {
         categories: Category.all.order(position: :asc),
-        info: ArtistInfo.last || ArtistInfo.new
+        info: ArtistInfo.last || ArtistInfo.new,
+        resume: Resume.last,
       }
     end
 

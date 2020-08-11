@@ -1,5 +1,4 @@
-Rails.application.routes.draw do
-  root to: "welcome#index"
+Rails.application.routes.draw do root to: "welcome#index"
 
   resources :categories, param: :slug
 
@@ -10,6 +9,7 @@ Rails.application.routes.draw do
     namespace :welcome do
       post :update_category_positions, to: "update_category_positions", as: "update_category_positions"
     end
+    resources :resumes
     resources :sessions, only: [:new, :create]
     resources :artist_infos, only: [:create, :update]
     resources :categories, except: :index, param: :slug do
