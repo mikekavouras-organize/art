@@ -5,9 +5,13 @@ let previewing = false
 
 const resize = (width, height, maxWidth, maxHeight) => {
   const isVertical = width < height
-  const ratio = isVertical ? maxHeight / height :  maxWidth / width
+  const ratio = isVertical ? maxHeight / height : maxWidth / width
   const newHeight = height * ratio
   const newWidth = width * ratio
+
+  if (newHeight >= window.innerHeight || newWidth >= window.innerWidth) {
+    return resize(width, height, maxWidth * 0.8, maxHeight * 0.8)
+  }
   return [newWidth, newHeight]
 }
 
@@ -179,8 +183,8 @@ const showPreview = (original) => {
   const [width, height] = resize(
     original.naturalWidth,
     original.naturalHeight,
-    window.innerWidth * 0.8,
-    window.innerHeight * 0.8
+    window.innerWidth,
+    window.innerHeight
   )
   clone.setAttribute('width', width)
   clone.setAttribute('height', height)
