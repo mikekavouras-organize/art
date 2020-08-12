@@ -6,4 +6,9 @@ class InfoController < ApplicationController
       info: ArtistInfo.last
     }
   end
+
+  def cv
+    resume = Resume.last
+    redirect_to rails_blob_url(resume.attachment.blob)
+  end
 end

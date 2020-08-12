@@ -24,7 +24,7 @@ module ActiveStorageAttachmentExtension
   end
 
   def process_video_preview
-    return unless self.video?
+    return if self.image?
 
     ProcessVideoPreviewJob
       .set(wait: 5.seconds)

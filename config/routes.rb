@@ -3,6 +3,7 @@ Rails.application.routes.draw do root to: "welcome#index"
   resources :categories, param: :slug
 
   get "/info", to: "info#index", as: :info
+  get "/cv", to: "info#cv", as: :cv
 
   namespace :admin do
     root to: "welcome#index"

@@ -40,20 +40,25 @@
   </div>
 <% end %>
 
-<h2>Upload CV</h2>
+<hr>
 
-<%= form_with url: admin_resumes_path, method: :post, accept: ".pfd", multipart: true, local: true do |form| %>
-  <div class="form-group">
-    <div class="form-group-body">
-      <%= form.file_field :resume, class: "" %>
-    </div>
-  </div>
-  <div class="form-group">
-    <div class="form-group-body">
-      <%= form.submit "Upload", class: "btn btn-primary" %>
-    </div>
-  </div>
-<% end %>
+<h2>CV</h2>
+
 <% if resume %>
-  <a href="<%= rails_blob_url(Resume.last.attachment.blob) %>">resume</a>
+  <a href="<%= rails_blob_url(resume.attachment.blob) %>">
+    <%= image_tag resume.attachment.preview(resize_to_limit: [640, 640]) %>
+  </a>
+<% else %>
+  <%= form_with url: admin_resumes_path, method: :post, accept: ".pfd", multipart: true do |form| %>
+    <div class="form-group">
+      <div class="form-group-body">
+        <%= form.file_field :resume, class: "" %>
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="form-group-body">
+        <%= form.submit "Upload", class: "btn btn-primary" %>
+      </div>
+    </div>
+  <% end %>
 <% end %>
