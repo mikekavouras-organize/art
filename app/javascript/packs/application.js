@@ -84,10 +84,11 @@ document.addEventListener('keyup', (e) => {
     case "ArrowLeft":
       showPreviousAsset()
       break;
+    case "Escape":
     case " ":
       if (previewing) {
         hidePreview()
-      } else {
+      } else if (e.key === " ") {
         const original = document.querySelector('.js-asset-container').querySelector('img')
         if (!original) return
         showPreview(original)
