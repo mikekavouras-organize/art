@@ -183,4 +183,8 @@ h1 {
   }
 }
 
-a[href*=cv] { color: black; text-decoration: underline; }
+a[href*=cv],
+a[href^=mailto] {
+  color: black;
+  text-decoration: underline;
+}
