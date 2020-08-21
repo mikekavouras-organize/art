@@ -27,7 +27,7 @@
       </div>
     </div>
     <div class="mobile pl-3 pt-3 mobile-header bg-white position-relative" style="z-index: 3;">
-      <h1 class="flex-auto flex-items-center">Jennifer Boyd</h1>
+      <h1 class="pt-2 flex-auto flex-items-center">Jennifer Boyd</h1>
       <div class="flex-items-center d-flex p-3 js-menu-toggle">
         <%= octicon "three-bars", width: 20 %>
       </div>
@@ -36,8 +36,7 @@
       <% Category.all.each do |category| %>
         <a href="<%= category_path(category) %>" class="nav-item <%= "selected" if category.slug == params[:slug] %>"><%= category.name %></a>
       <% end %>
-      <a href="<%= info_path %>" class="nav-item">Info<a>
-      <a href="#" class="nav-item">Contact</a>
+      <a href="<%= info_path %>" class="nav-item">info<a>
     </div>
     <div class="mobile">
       <%= yield :mobile %>
