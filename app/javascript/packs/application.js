@@ -9,7 +9,7 @@ const resize = (width, height, maxWidth, maxHeight) => {
   const newHeight = height * ratio
   const newWidth = width * ratio
 
-  if (newHeight >= window.innerHeight || newWidth >= window.innerWidth) {
+  if (newHeight >= window.innerHeight - 10 || newWidth >= window.innerWidth - 10) {
     return resize(width, height, maxWidth * 0.8, maxHeight * 0.8)
   }
   return [newWidth, newHeight]
