@@ -36,7 +36,7 @@
       <% Category.all.each do |category| %>
         <a href="<%= category_path(category) %>" class="nav-item <%= "selected" if category.slug == params[:slug] %>"><%= category.name %></a>
       <% end %>
-      <a href="<%= info_path %>" class="nav-item">info<a>
+      <a href="<%= info_path %>" class="nav-item">info</a>
     </div>
     <div class="mobile">
       <%= yield :mobile %>
