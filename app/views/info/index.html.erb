@@ -1,12 +1,12 @@
 <div class="d-flex flex-items-center flex-justify-center height-full">
-  <div class="sans-serif">
+  <div class="sans-serif" style="max-width: 50%">
     <%= render_markdown(info.bio) %>
   </div>
 </div>
 
 <% content_for :mobile do %>
-  <div class="d-flex flex-items-center flex-justify-center height-full">
-    <div class="sans-serif">
+  <div class="d-flex flex-items-center height-full p-3">
+    <div class="sans-serif" style="max-width: 70%">
       <%= render_markdown(info.bio) %>
     </div>
   </div>
