@@ -5,7 +5,8 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-    <%= javascript_importmap_tags("admin") %>
+    <%= javascript_importmap_tags %>
+    <%= javascript_import_module_tag "admin" %>
     <%= stylesheet_link_tag 'admin', media: 'all' %>
   </head>
 
