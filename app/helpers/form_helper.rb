@@ -1,6 +1,6 @@
 module FormHelper
-  def form_with(options)
-    options[:local] = true
-    super options
+  def form_with(opts)
+    opts[:local] = true
+    super(**opts)
   end
 end

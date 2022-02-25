@@ -1,4 +1,6 @@
 class CategoriesController < ApplicationController
+  include ActiveStorage::SetCurrent
+
   def index
   end
 

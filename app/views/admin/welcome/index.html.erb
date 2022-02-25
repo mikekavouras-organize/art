@@ -1,7 +1,7 @@
 <div class="d-flex flex-items-center pb-3 mb-3 border-bottom">
   <h2 class="flex-auto">Categories</h1>
   <%= link_to new_admin_category_path, class: "btn btn-sm btn-primary" do %>
-    <%= octicon "plus-small", style: "margin-top:1px;" %> New
+    <%= octicon "plus", width: 13, style: "margin-top:1px;" %> New
   <% end %>
 </div>
 <div class="js-sortable sortable">
@@ -9,7 +9,7 @@
     <div class="f3 js-sortable-item" style="display:flex" data-id="<%= category.id %>">
       <a class="d-inline-block flex-auto" href="<%= admin_category_path(category) %>"><%= category.name %></a>
       <span class="handle d-flex flex-items-center flex-justify-center p-2">
-        <%= octicon "grabber", width: 12 %>
+        <%= octicon "grabber", width: 13 %>
       </span>
     </div>
   <% end %>

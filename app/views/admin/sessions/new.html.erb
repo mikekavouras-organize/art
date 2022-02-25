@@ -1,5 +1,5 @@
 <div class="col-4 mx-auto">
-  <%= form_with(url: admin_sessions_path, method: :post) do |form| %>
+  <%= form_with url: admin_sessions_path, method: :post do |form| %>
     <dl class="form-group">
       <dt><%= form.label :username %></dt>
       <dd><%= form.text_field :username, class: "form-control" %></dd>
