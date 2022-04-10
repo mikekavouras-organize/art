@@ -2,6 +2,8 @@
 
 module Admin
   class SeriesController < ApplicationController
+    include ActiveStorage::SetCurrent
+
     before_action :authenticate
 
     layout "admin"

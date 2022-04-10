@@ -9,8 +9,10 @@
     <link rel="stylesheet" href="https://use.typekit.net/rtg4twp.css">
     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
 
+    <%= javascript_importmap_tags %>
+    <%= javascript_import_module_tag "application" %>
+    <link href="https://unpkg.com/@primer/css@^16.0.0/dist/primer.css" rel="stylesheet" />
     <%= stylesheet_link_tag 'application', media: 'all' %>
-    <%= javascript_pack_tag 'application', defer: true %>
   </head>
 
   <body class="tk-rockwell">

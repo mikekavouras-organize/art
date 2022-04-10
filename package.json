@@ -6,14 +6,8 @@
     "@rails/actioncable": "^6.0.0",
     "@rails/activestorage": "^6.0.0",
     "@rails/ujs": "^6.0.0",
-    "@rails/webpacker": "4.2.2",
-    "delegated-events": "^1.1.1",
     "html5sortable": "^0.9.17",
-    "selector-observer": "^2.1.6",
     "turbolinks": "^5.2.0"
   },
-  "version": "0.1.0",
-  "devDependencies": {
-    "webpack-dev-server": "^3.10.1"
-  }
+  "version": "0.1.0"
 }

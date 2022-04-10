@@ -1,7 +1,9 @@
-import {observe} from 'selector-observer'
-import {on} from 'delegated-events'
+import { observe } from 'selector-observer'
+import { on } from 'delegated-events'
 
 let previewing = false
+
+console.log('application')
 
 const resize = (width, height, maxWidth, maxHeight) => {
   const isVertical = width < height
@@ -203,4 +205,6 @@ on('click', '.js-asset.image', ({target}) => {
   showPreview(target)
 })
 
-showAsset(assetIds[0])
+if (typeof assetIds !== 'undefined') {
+  showAsset(assetIds[0])
+}

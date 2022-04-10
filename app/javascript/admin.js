@@ -1,6 +1,8 @@
 import {observe} from 'selector-observer'
 import {on} from 'delegated-events'
-import sortable from '../../../node_modules/html5sortable/dist/html5sortable.es.js'
+import Sortable from 'sortablejs'
+
+console.log('admin')
 
 const preloadImage = (image, onLoad) => {
   let i = new Image()
@@ -49,22 +51,39 @@ observe('.js-file-input', {
   }
 })
 
+let s
+
 observe('.js-sortable', {
   add(el) {
-    const sortObject = sortable('.js-sortable', {
-      forcePlaceholderSize: true,
-      placeholderClass: 'sortable-placeholder',
-      items: '.js-sortable-item',
-      handle: '.handle'
-    })[0]
+    // const sortObject = sortable('.js-sortable', {
+      // forcePlaceholderSize: true,
+      // placeholderClass: 'sortable-placeholder',
+      // items: '.js-sortable-item',
+      // handle: '.handle'
+    // })[0]
 
-    sortObject.addEventListener('sortupdate', function(event) {
-      const items = event.target.querySelectorAll('.js-sortable-item')
-      const ids = Array.from(items).map(item => item.getAttribute('data-id'))
-      const input = document.querySelector('.js-positions')
-      input.value = ids.join(',')
-      sendForm(input.form)
+    s = new Sortable(el, {
+      handle: '.handle',
+      dragClass: 'sortable-placeholder',
+      chosenClass: 'sortable-chosen',
+      ghostClass: 'sortable-ghost',
+      dataIdAttr: 'data-id',
+      animation: 150,
+      onSort: function(e) {
+        const ids = this.toArray()
+        const input = document.querySelector('.js-positions')
+        input.value = ids.join(',')
+        sendForm(input.form)
+      }
     })
+
+    // sortObject.addEventListener('sortupdate', function(event) {
+    //   const items = event.target.querySelectorAll('.js-sortable-item')
+    //   const ids = Array.from(items).map(item => item.getAttribute('data-id'))
+    //   const input = document.querySelector('.js-positions')
+    //   input.value = ids.join(',')
+    //   sendForm(input.form)
+    // })
   }
 })
 

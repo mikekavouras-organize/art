@@ -7,11 +7,11 @@
 <div class="d-flex flex-items-center pb-3 mb-3 border-bottom">
   <h1><%= category.name.capitalize %></h1>
   <%= link_to edit_admin_category_path, class: "btn-octicon ml-2" do %>
-    <%= octicon "pencil" %>
+    <%= octicon "pencil", width: 18 %>
   <% end %>
   <div class="flex-auto text-right">
     <%= link_to new_admin_category_series_path(category), class: "btn btn-sm btn-primary ml-2" do %>
-      <%= octicon "file-media" %> New
+      <%= octicon "file-media", width: 16 %> New
     <% end %>
   </div>
 </div>

@@ -5,8 +5,10 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
+    <%= javascript_importmap_tags %>
+    <%= javascript_import_module_tag "admin" %>
+    <link href="https://unpkg.com/@primer/css@^16.0.0/dist/primer.css" rel="stylesheet" />
     <%= stylesheet_link_tag 'admin', media: 'all' %>
-    <%= javascript_pack_tag 'admin', defer: true %>
   </head>
 
   <body>

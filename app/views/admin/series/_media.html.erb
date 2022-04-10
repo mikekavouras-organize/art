@@ -3,7 +3,7 @@
     <p style="font-weight: 600" class="flex-auto mb-0">Media</p>
     <div class="d-flex flex-items-center flex-justify-center">
       <div class="loader mr-3 js-new-media-loader"></div>
-      <label for="series_assets" class="btn btn-sm js-add-media-btn"><%= octicon "plus-small" %> Add</label>
+      <label for="series_assets" class="btn btn-sm js-add-media-btn"><%= octicon "plus", width: 16 %> Add</label>
     </div>
   </div>
   <div class="clearfix"></div>
@@ -26,17 +26,17 @@
       <div class="d-flex flex-items-center flex-justify-center">
         <%= form_with model: model, url: admin_category_series_asset_delete_path(asset_id: asset), method: :delete do |form| %>
           <button type="button" class="trashcan js-media-delete btn btn-sm btn-danger px-2">
-            <%= octicon "trashcan", width: 12 %>
+            <%= octicon "trash", width: 16 %>
           </button>
         <% end %>
       </div>
       <div class="d-flex flex-items-center flex-justify-center p-2">
       <a href="<%= edit_admin_category_series_asset_path(series_id: model.id, id: asset.id) %>" class="btn btn-sm" style="padding-left:6px;padding-right:6px;">
-          <%= octicon "pencil", width: 12, class: "text-gray-dark" %>
+          <%= octicon "pencil", width: 16, class: "text-gray-dark" %>
         </a>
       </div>
       <div class="handle d-flex flex-items-center flex-justify-center p-2">
-        <%= octicon "grabber", width: 12 %>
+        <%= octicon "grabber", width: 16 %>
       </div>
     </div>
   <% end %>
