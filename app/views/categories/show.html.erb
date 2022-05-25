@@ -37,7 +37,7 @@
           </svg>
           <div class="piece-details js-piece-details sans-serif" hidden>
             <div class="mb-1"><%= render_markdown(asset.title).html_safe %></div>
-            <%= simple_format(asset.description) %>
+            <span class="piece-details-description"><%= simple_format(asset.description) %></span>
           </div>
         </div>
       </div>
