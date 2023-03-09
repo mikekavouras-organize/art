@@ -1,5 +1,4 @@
 Rails.application.routes.draw do root to: "welcome#index"
-
   resources :categories, param: :slug
 
   get "/info", to: "info#index", as: :info

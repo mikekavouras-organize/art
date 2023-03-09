@@ -52,3 +52,7 @@
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
 }
+
+.cv-preview {
+  box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+}

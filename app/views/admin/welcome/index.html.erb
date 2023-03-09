@@ -42,12 +42,24 @@
 
 <hr>
 
-<h2>CV</h2>
+<div class="d-flex">
+  <h2 class="flex-1">CV</h2>
+
+  <% if resume %>
+    <%= form_tag admin_resume_path(id: resume.id), method: :delete do |form| %>
+      <button type="submit" class="btn btn-danger">
+        <%= octicon "trash", style: "margin-top:1px;" %> Delete
+      </button>
+    <% end %>
+  <% end %>
+</div>
 
 <% if resume %>
-  <a href="<%= rails_blob_url(resume.attachment.blob) %>">
-    <%= image_tag resume.attachment.preview(resize_to_limit: [640, 640]) %>
-  </a>
+  <div class="mt-3">
+    <a href="<%= rails_blob_url(resume.attachment.blob) %>">
+      <%= image_tag resume.attachment.preview(resize_to_limit: [640, 640]), class: "cv-preview" %>
+    </a>
+  </div>
 <% else %>
   <%= form_with url: admin_resumes_path, method: :post, accept: ".pfd", multipart: true do |form| %>
     <div class="form-group">

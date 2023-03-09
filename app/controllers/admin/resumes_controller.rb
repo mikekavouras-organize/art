@@ -6,5 +6,10 @@ module Admin
       Resume.create(attachment: params[:resume])
       redirect_to admin_root_path, flash: { notice: "Artist info updated" }
     end
+
+    def destroy
+      Resume.last.destroy
+      redirect_to admin_root_path, flash: { notice: "CV deleted" }
+    end
   end
 end
