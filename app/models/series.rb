@@ -10,4 +10,10 @@ class Series < ApplicationRecord
   def ordered_assets
     self.assets.order("position ASC")
   end
+
+  def has_unanalyzed_assets?
+    self.assets.includes(:blob).any? do |asset|
+      (asset.analyzed? || false) == false
+    end
+  end
 end

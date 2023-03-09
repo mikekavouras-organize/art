@@ -3,7 +3,6 @@ import { on } from 'delegated-events'
 
 let previewing = false
 
-console.log('application')
 
 const resize = (width, height, maxWidth, maxHeight) => {
   const isVertical = width < height
@@ -18,9 +17,7 @@ const resize = (width, height, maxWidth, maxHeight) => {
 }
 
 function showAsset(assetId) {
-  console.log('d', assetId)
   hideArtDescription()
-  console.log('e')
 
   const template = document.querySelector(`.js-asset-${assetId}`)
   const content = template.content.cloneNode(true)
@@ -66,9 +63,7 @@ function showPreviousAsset() {
 }
 
 function showNextAsset() {
-  console.log('a')
   if (previewing) return
-  console.log('b')
   currentAssetIdx++
   const assetId = assetIds[currentAssetIdx % assetIds.length]
   showAsset(assetId)
