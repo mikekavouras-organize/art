@@ -1,7 +1,7 @@
 <div class="d-flex flex-items-center flex-justify-center height-full">
   <div class="info" style="max-width: 50%">
     <%= render_markdown(info.bio) %>
-    <a href="<% resume.last.attachment.url.sub(/\?.*/, '') %>">cv</a>
+    <a href="<% resume.attachment.url.sub(/\?.*/, '') %>">cv</a>
   </div>
 </div>
 
