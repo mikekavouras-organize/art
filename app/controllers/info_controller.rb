@@ -3,7 +3,8 @@
 class InfoController < ApplicationController
   def index
     render "info/index", locals: {
-      info: ArtistInfo.last
+      info: ArtistInfo.last,
+      resume: Resume.last
     }
   end
 
