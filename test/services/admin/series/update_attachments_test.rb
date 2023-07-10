@@ -55,6 +55,7 @@ class Admin::Series::UpdateAttachmentsTest < ActiveSupport::TestCase
     assert_equal 2, assets[2].position
     assert_equal 3, assets[3].position
 
+
     ids = series.reload.assets.map(&:signed_id)
     preferred_order = [
       assets[2].id,
@@ -62,13 +63,13 @@ class Admin::Series::UpdateAttachmentsTest < ActiveSupport::TestCase
       assets[1].id,
       assets[3].id
     ]
+
     update_attachments(series, ids, preferred_order)
 
-    assets = series.reload.assets
-    assert_equal 0, assets[2].position
-    assert_equal 1, assets[0].position
-    assert_equal 2, assets[1].position
-    assert_equal 3, assets[3].position
+    assert_equal 0, assets[2].position, "Expected asset #{assets[2].id} in position 0"
+    assert_equal 1, assets[0].position, "Expected asset #{assets[0].id} in position 1"
+    assert_equal 2, assets[1].position, "Expected asset #{assets[1].id} in position 2"
+    assert_equal 3, assets[3].position, "Expected asset #{assets[3].id} in position 3"
   end
 
   def update_attachments(series, attachables, preferred_order = [])

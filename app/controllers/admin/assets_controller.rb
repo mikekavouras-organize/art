@@ -1,5 +1,7 @@
 module Admin
   class AssetsController < ApplicationController
+    before_action :authenticate
+
     layout "admin"
 
     def edit

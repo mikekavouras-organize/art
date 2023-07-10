@@ -1,14 +1,27 @@
 <div class="d-flex flex-items-center flex-justify-center height-full">
   <div class="info" style="max-width: 50%">
-    <%= render_markdown(info.bio) %>
-    <a href="<%= resume.attachment.url.sub(/\?.*/, '') %>">cv</a>
+    <%= image_tag rails_blob_url(info.headshot.blob), style: "max-width: 100%; display: block;", class: "pb-5" %>
+    <div class="text-right">
+      <p>contact: <a href="mailto:hello@jenniferboyd.studio">hello@jenniferart.studio</a></p>
+      <p><a href="<%= resume.attachment.url.sub(/\?.*/, '') %>">cv</a></p>
+      <p><a href="#">artist statement</a></p>
+      <p><a href="#">join mailing list</a></p>
+      <a href="https://www.instagram.com/jenniferboyd.studio/"><img src="ig.svg" style="width:24px;"></a>
+    </div>
   </div>
 </div>
 
 <% content_for :mobile do %>
   <div class="d-flex flex-items-center height-full p-3">
-    <div class="info" style="max-width: 70%">
-      <%= render_markdown(info.bio) %>
+    <div class="info">
+      <%= image_tag rails_blob_url(info.headshot.blob), style: "max-width: 100%; display: block;", class: "pb-5" %>
+      <div class="text-right">
+        <p>contact: <a href="mailto:hello@jenniferboyd.studio">hello@jenniferart.studio</a></p>
+      <p><a href="<%= resume.attachment.url.sub(/\?.*/, '') %>">cv</a></p>
+        <p><a href="#">artist statement</a></p>
+        <p><a href="#">join mailing list</a></p>
+        <a href="https://www.instagram.com/jenniferboyd.studio/"><img src="ig.svg" style="width:24px;"></a>
+      </div>
     </div>
   </div>
 <% end %>
