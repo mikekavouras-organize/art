@@ -11,6 +11,8 @@ module Admin
         headshot: artist_info.headshot,
         resume: resume,
         resume_preview: resume_preview,
+        statement: statement,
+        statement_preview: statement_preview
       }
     end
 
@@ -42,6 +44,16 @@ module Admin
 
     def resume_preview
       resume.attachment.preview(resize_to_limit: [640, 640])
+    rescue
+      nil
+    end
+
+    def statement
+      @statement ||= ArtistStatement.last
+    end
+
+    def statement_preview
+      statement.attachment.preview(resize_to_limit: [640, 640])
     rescue
       nil
     end

@@ -10,6 +10,7 @@ Rails.application.routes.draw do root to: "welcome#index"
       post :update_category_positions, to: "update_category_positions", as: "update_category_positions"
     end
     resources :resumes
+    resource :artist_statement
     resources :sessions, only: [:new, :create]
     resources :artist_infos, only: [:create, :update]
     resource :headshots, only: [:create, :destroy]

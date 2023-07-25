@@ -47,6 +47,15 @@
 <hr>
 
 <%=
+  render partial: "admin/welcome/artist_statement", locals: {
+    statement: statement,
+    statement_preview: statement_preview,
+  }
+%>
+
+<hr>
+
+<%=
   render partial: "admin/welcome/resume", locals: {
     resume: resume,
     resume_preview: resume_preview,
