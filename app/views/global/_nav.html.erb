@@ -1,5 +1,7 @@
 <div class="nav">
-  <img src="/name.jpeg" width="220"/>
+  <a href="/">
+    <img src="/name.jpeg" width="220"/>
+  </a>
   <% Category.all.order(position: :asc).each do |category| %>
     <a href="<%= category_path(category) %>" class="nav-item <%= "selected" if category.slug == params[:slug] %>">
       <%= category.name.downcase %>

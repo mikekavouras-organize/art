@@ -7,7 +7,8 @@ module Admin
     def index
       render "admin/welcome/index", locals: {
         categories: Category.all.order(position: :asc),
-        info: ArtistInfo.last || ArtistInfo.new,
+        info: artist_info,
+        headshot: artist_info.headshot,
         resume: resume,
         resume_preview: resume_preview
       }
@@ -23,6 +24,10 @@ module Admin
       case_string += "END"
 
       Category.where(id: category_ids).update_all(case_string)
+    end
+
+    def artist_info
+      @info ||= (ArtistInfo.last || ArtistInfo.new)
     end
 
     def resume
