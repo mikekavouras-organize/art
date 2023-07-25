@@ -8,7 +8,7 @@ module Admin
       render "admin/welcome/index", locals: {
         categories: Category.all.order(position: :asc),
         info: ArtistInfo.last || ArtistInfo.new,
-        resume: Resume.last,
+        resume: resume,
         resume_preview: resume_preview
       }
     end
@@ -26,7 +26,7 @@ module Admin
     end
 
     def resume
-      return @resumen if defined?(@resume)
+      return @resume if defined?(@resume)
       @resume = Resume.last
     end
 
