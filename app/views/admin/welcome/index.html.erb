@@ -56,7 +56,11 @@
 <% if resume %>
   <div class="mt-3">
     <a href="<%= rails_blob_url(resume.attachment.blob) %>">
-      <%= image_tag resume.attachment.preview(resize_to_limit: [640, 640]), class: "cv-preview" %>
+      <% if resume_preview %>
+        <%= image_tag resume_preview, class: "cv-preview" %>
+      <% else %>
+          View preview
+      <% end %>
     </a>
   </div>
 <% else %>
