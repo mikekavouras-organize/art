@@ -1,5 +1,5 @@
 module Admin
-  class AssetsController < ApplicationController
+  class AssetsController < ::AdminController
     layout "admin"
 
     def edit

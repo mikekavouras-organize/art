@@ -1,5 +1,5 @@
 module Admin
-  class WelcomeController < ApplicationController
+  class WelcomeController < ::AdminController
     before_action :authenticate
 
     layout "admin"
@@ -8,16 +8,13 @@ module Admin
       render "admin/welcome/index", locals: {
         categories: Category.all.order(position: :asc),
         info: ArtistInfo.last || ArtistInfo.new,
-        resume: Resume.last,
+        resume: resume,
+        resume_preview: resume_preview
       }
     end
 
     def update_category_positions
       category_ids = params.delete("positions").split(",")
-
-      puts "*" * 80
-      puts category_ids
-      puts "*" * 80
 
       case_string = "position = CASE id "
       category_ids.each.with_index do |id, index|
@@ -26,6 +23,15 @@ module Admin
       case_string += "END"
 
       Category.where(id: category_ids).update_all(case_string)
+    end
+
+    def resume
+      return @resume if defined?(@resume)
+      @resume = Resume.last
+    end
+
+    def resume_preview
+      resume&.attachment.preview(resize_to_limit: [640, 640]) rescue nil
     end
   end
 end

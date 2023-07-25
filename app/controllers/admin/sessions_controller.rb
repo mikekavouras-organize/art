@@ -1,5 +1,7 @@
 module Admin
-  class SessionsController < ApplicationController
+  class SessionsController < ::AdminController
+    skip_before_action :authenticate
+
     layout "admin"
 
     def new
