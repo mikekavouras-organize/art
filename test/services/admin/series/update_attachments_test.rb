@@ -64,11 +64,10 @@ class Admin::Series::UpdateAttachmentsTest < ActiveSupport::TestCase
     ]
     update_attachments(series, ids, preferred_order)
 
-    assets = series.reload.assets
-    assert_equal 0, assets[2].position
-    assert_equal 1, assets[0].position
-    assert_equal 2, assets[1].position
-    assert_equal 3, assets[3].position
+    assert_equal 0, assets[2].position, "Expected #{assets[2].id} to be at position 0"
+    assert_equal 1, assets[0].position, "Expected #{assets[0].id} to be at position 1"
+    assert_equal 2, assets[1].position, "Expected #{assets[1].id} to be at position 2"
+    assert_equal 3, assets[3].position, "Expected #{assets[3].id} to be at position 3"
   end
 
   def update_attachments(series, attachables, preferred_order = [])
