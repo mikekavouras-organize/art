@@ -1,5 +1,5 @@
 module Admin
-  class WelcomeController < ApplicationController
+  class WelcomeController < ::AdminController
     before_action :authenticate
 
     layout "admin"

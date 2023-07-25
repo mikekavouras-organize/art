@@ -1,8 +1,7 @@
 module Admin
-  class CategoriesController < ApplicationController
+  class CategoriesController < ::AdminController
     include ActiveStorage::SetCurrent
 
-    before_action :authenticate
     before_action :category_required, only: [:show, :edit, :update]
 
     layout "admin"

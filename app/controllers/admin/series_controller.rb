@@ -1,10 +1,8 @@
 # frozen_string_literal: true
 
 module Admin
-  class SeriesController < ApplicationController
+  class SeriesController < ::AdminController
     include ActiveStorage::SetCurrent
-
-    before_action :authenticate
 
     layout "admin"
 
