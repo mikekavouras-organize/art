@@ -22,8 +22,7 @@
 <hr>
 
 <h2>Artist info</h2>
-<%
-  form_method = info.persisted? ? :patch : :post
+<% form_method = info.persisted? ? :patch : :post
   form_action = info.persisted? ? admin_artist_info_path(info) : admin_artist_infos_path
   form_submit = info.persisted? ? "Update" : "Save"
 %>
@@ -51,4 +50,12 @@
     resume: resume,
     resume_preview: resume_preview,
   }
+%>
+
+<hr>
+
+<%= render partial: "admin/welcome/artist_statement", locals: {
+      artist_statement: artist_statement,
+      artist_statement_preview: artist_statement_preview,
+    }
 %>

@@ -2,8 +2,6 @@
 
 module Admin
   class HeadshotsController < ::AdminController
-    before_action :authenticate
-
     def create
       artist_info.update(headshot: params[:headshot])
       redirect_to admin_root_path, flash: { notice: "Artist photo updated" }

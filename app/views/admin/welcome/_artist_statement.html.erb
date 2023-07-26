@@ -1,0 +1,35 @@
+<div class="d-flex">
+  <h2 class="flex-1">Statment</h2>
+
+  <% if artist_statement %>
+    <%= form_tag admin_artist_statement_path(id: artist_statement.id), method: :delete do |form| %>
+      <button type="submit" class="btn btn-danger">
+        <%= octicon "trash", style: "margin-top:1px;" %> Delete
+      </button>
+    <% end %>
+  <% end %>
+</div>
+
+<% if artist_statement.present? %>
+  <div class="my-3">
+    <a href="<%= rails_blob_url(artist_statement.blob) %>">
+      <% if artist_statement_preview %>
+        <%= image_tag artist_statement_preview, class: "cv-preview" %>
+      <% else %>
+        View preview
+      <% end %>
+    </a> </div>
+<% else %>
+  <%= form_with url: admin_artist_statement_path, method: :post, accept: ".pfd", multipart: true do |form| %>
+    <div class="form-group">
+      <div class="form-group-body">
+        <%= form.file_field :artist_statement, class: "" %>
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="form-group-body">
+        <%= form.submit "Upload", class: "btn btn-primary" %>
+      </div>
+    </div>
+  <% end %>
+<% end %>
