@@ -13,6 +13,7 @@ module Admin
         resume_preview: resume_preview,
         artist_statement: artist_statement,
         artist_statement_preview: artist_statement_preview,
+        selected_tab: params[:tab],
       }
     end
 

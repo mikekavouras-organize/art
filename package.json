@@ -2,7 +2,7 @@
   "name": "art",
   "private": true,
   "dependencies": {
-    "@primer/css": "^14.2.0",
+    "@primer/css": "^21.0.7",
     "@rails/actioncable": "^6.0.0",
     "@rails/activestorage": "^6.0.0",
     "@rails/ujs": "^6.0.0",

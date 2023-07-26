@@ -4,12 +4,12 @@ module Admin
   class HeadshotsController < ::AdminController
     def create
       artist_info.update(headshot: params[:headshot])
-      redirect_to admin_root_path, flash: { notice: "Artist photo updated" }
+      redirect_to admin_root_path(tab: "headshot"), flash: { notice: "Artist photo updated" }
     end
 
     def destroy
       artist_info.headshot&.destroy
-      redirect_to admin_root_path, flash: { notice: "Removed artist photo" }
+      redirect_to admin_root_path(tab: "headshot"), flash: { notice: "Removed artist photo" }
     end
 
     private

@@ -22,41 +22,60 @@
 <hr>
 
 <h2>Artist info</h2>
-<%
-  form_method = info.persisted? ? :patch : :post
-  form_action = info.persisted? ? admin_artist_info_path(info) : admin_artist_infos_path
-  form_submit = info.persisted? ? "Update" : "Save"
-%>
-<%= form_with model: info, url: form_action, method: form_method do |form| %>
-  <div class="form-group">
-    <div class="form-group-body">
-      <textarea name="artist_info[bio]" class="form-control"><%= info.bio %></textarea>
-    </div>
-  </div>
-  <div class="form-group">
-    <div class="form-group-body">
-      <%= form.submit form_submit, class: "btn btn-primary" %>
-    </div>
-  </div>
+<%= render(Primer::Alpha::UnderlinePanels.new(label: "With panels")) do |component| %>
+  <% component.with_tab(id: "tab-1", selected: selected_tab.nil? || selected_tab == "bio") do |tab| %>
+    <% tab.with_text { "Bio" } %>
+    <% tab.with_panel do %>
+      <%
+        form_method = info.persisted? ? :patch : :post
+        form_action = info.persisted? ? admin_artist_info_path(info) : admin_artist_infos_path
+        form_submit = info.persisted? ? "Update" : "Save"
+      %>
+      <%= form_with model: info, url: form_action, method: form_method do |form| %>
+        <div class="form-group">
+          <div class="form-group-body">
+            <textarea name="artist_info[bio]" class="form-control"><%= info.bio %></textarea>
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="form-group-body">
+            <%= form.submit form_submit, class: "btn btn-primary" %>
+          </div>
+        </div>
+      <% end %>
+    <% end %>
+  <% end %>
+  <% component.with_tab(id: "tab-2", selected: selected_tab == "headshot") do |tab| %>
+    <% tab.with_text { "Photo" } %>
+    <% tab.with_panel do %>
+      <div class="mt-3">
+        <%= render partial: "admin/welcome/headshot", locals: { headshot: headshot } %>
+      </div>
+    <% end %>
+  <% end %>
+  <% component.with_tab(id: "tab-3", selected: selected_tab == "resume") do |tab| %>
+    <% tab.with_text { "CV" } %>
+    <% tab.with_panel do %>
+      <div class="mt-3">
+        <%=
+          render partial: "admin/welcome/resume", locals: {
+            resume: resume,
+            resume_preview: resume_preview,
+          }
+        %>
+      </div>
+    <% end %>
+  <% end %>
+  <% component.with_tab(id: "tab-4", selected: selected_tab == "statement") do |tab| %>
+    <% tab.with_text { "Statement" } %>
+    <% tab.with_panel do %>
+      <div class="mt-3">
+        <%= render partial: "admin/welcome/artist_statement", locals: {
+              artist_statement: artist_statement,
+              artist_statement_preview: artist_statement_preview,
+            }
+        %>
+      </div>
+    <% end %>
+  <% end %>
 <% end %>
-
-<hr>
-
-<%= render partial: "admin/welcome/headshot", locals: { headshot: headshot } %>
-
-<hr>
-
-<%=
-  render partial: "admin/welcome/resume", locals: {
-    resume: resume,
-    resume_preview: resume_preview,
-  }
-%>
-
-<hr>
-
-<%= render partial: "admin/welcome/artist_statement", locals: {
-      artist_statement: artist_statement,
-      artist_statement_preview: artist_statement_preview,
-    }
-%>

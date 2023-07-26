@@ -4,12 +4,12 @@ module Admin
   class ArtistStatementController < ::AdminController
     def create
       artist_info.update(artist_statement: params[:artist_statement])
-      redirect_to admin_root_path, flash: { notice: "Artist statement updated." }
+      redirect_to admin_root_path(tab: "statement"), flash: { notice: "Artist statement updated." }
     end
 
     def destroy
       artist_info.artist_statement.destroy
-      redirect_to admin_root_path, flash: { notice: "Artist statement removed" }
+      redirect_to admin_root_path(tab: "statement"), flash: { notice: "Artist statement removed" }
     end
 
     private

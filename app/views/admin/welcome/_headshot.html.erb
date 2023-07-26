@@ -1,6 +1,4 @@
 <div class="d-flex">
-  <h2 class="flex-1">Artist photo</h2>
-
   <% if headshot.present? %>
     <%= form_tag admin_headshots_path, method: :delete do |form| %>
       <button type="submit" class="btn btn-danger">

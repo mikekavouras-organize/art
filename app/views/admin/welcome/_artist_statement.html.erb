@@ -1,7 +1,5 @@
 <div class="d-flex">
-  <h2 class="flex-1">Statement</h2>
-
-  <% if artist_statement %>
+  <% if artist_statement.present? %>
     <%= form_tag admin_artist_statement_path(id: artist_statement.id), method: :delete do |form| %>
       <button type="submit" class="btn btn-danger">
         <%= octicon "trash", style: "margin-top:1px;" %> Delete
