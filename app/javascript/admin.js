@@ -1,8 +1,7 @@
+import '@primer/view-components'
 import {observe} from 'selector-observer'
 import {on} from 'delegated-events'
 import Sortable from 'sortablejs'
-
-console.log('admin')
 
 const preloadImage = (image, onLoad) => {
   let i = new Image()

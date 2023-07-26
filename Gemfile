@@ -30,6 +30,8 @@ gem 'redcarpet'
 gem 'sidekiq'
 gem 'importmap-rails'
 
+gem "primer_view_components"
+
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem 'dotenv-rails'
