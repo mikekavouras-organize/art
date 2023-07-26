@@ -10,7 +10,9 @@ module Admin
         info: artist_info,
         headshot: artist_info.headshot,
         resume: resume,
-        resume_preview: resume_preview
+        resume_preview: resume_preview,
+        artist_statement: artist_statement,
+        artist_statement_preview: artist_statement_preview,
       }
     end
 
@@ -37,6 +39,14 @@ module Admin
 
     def resume_preview
       resume&.attachment.preview(resize_to_limit: [640, 640]) rescue nil
+    end
+
+    def artist_statement
+      artist_info.artist_statement
+    end
+
+    def artist_statement_preview
+      artist_statement.preview(resize_to_limit: [640, 640]) rescue nil
     end
   end
 end

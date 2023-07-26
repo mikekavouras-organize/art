@@ -13,6 +13,7 @@ Rails.application.routes.draw do root to: "welcome#index"
     resources :sessions, only: [:new, :create]
     resources :artist_infos, only: [:create, :update]
     resource :headshots, only: [:create, :destroy]
+    resource :artist_statement, only: [:create, :destroy], controller: "artist_statement"
     resources :categories, except: :index, param: :slug do
       post :update_positions, to: "categories#update_positions", as: "update_positions"
       post :update_series_positions, to: "categories#update_series_positions", as: "update_series_positions"
