@@ -1,6 +1,4 @@
 <div class="d-flex">
-  <h2 class="flex-1">CV</h2>
-
   <% if resume %>
     <%= form_tag admin_resume_path(id: resume.id), method: :delete do |form| %>
       <button type="submit" class="btn btn-danger">
