@@ -19,13 +19,15 @@ class InfoController < ApplicationController
   end
 
   def resume_url
-    return unless url = resume.attachment.url rescue "#"
-    url.sub(/\?.*/, '')
+    resume.attachment.url.sub(/\?.*/, '')
+  rescue
+    "#"
   end
 
   def artist_statement_url
-    return unless url = info.artist_statement.attachment.url rescue "#"
-    url.sub(/\?.*/, '')
+    info.artist_statement.attachment.url.sub(/\?.*/, '')
+  rescue
+    "#"
   end
 
   def info
