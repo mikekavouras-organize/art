@@ -5,3 +5,8 @@
     </div>
   </div>
 <% end %>
+<% content_for :mobile do %>
+  <div class="p-3">
+    <%= render_markdown(info.bio) %>
+  </div>
+<% end %>

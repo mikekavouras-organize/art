@@ -138,7 +138,9 @@ h1 {
   .mobile {
     display: block;
 
-    &.mobile-header { display: flex; }
+    &.mobile-header {
+      display: flex;
+    }
   }
 }
 
@@ -149,6 +151,7 @@ h1 {
   height: 100vh;
   z-index: 2;
   transform: translateY(0);
+  background: white;
   display: none;
   padding-top: 92px;
 
