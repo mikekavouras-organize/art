@@ -19,7 +19,7 @@ class InfoController < ApplicationController
   end
 
   def resume_url
-    resume.attachment.url.sub(/\?.*/, '')
+    Resume.last.attachment.url.sub(/\?.*/, '')
   rescue
     "#"
   end
