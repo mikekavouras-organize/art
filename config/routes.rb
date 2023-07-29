@@ -3,6 +3,7 @@ Rails.application.routes.draw do root to: "welcome#index"
 
   get "/info", to: "info#index", as: :info
   get "/cv", to: "info#cv", as: :cv
+  get "/artist_statement", to: "info#artist_statement"
 
   namespace :admin do
     root to: "welcome#index"

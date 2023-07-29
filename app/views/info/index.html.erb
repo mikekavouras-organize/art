@@ -1,7 +1,12 @@
 <div class="d-flex flex-items-center flex-justify-center height-full">
   <div class="info" style="max-width: 50%">
-    <%= render_markdown(info.bio) %>
-    <a href="<%= resume.attachment.url.sub(/\?.*/, '') %>">cv</a>
+    <%= image_tag rails_blob_url(info.headshot.blob), style: "max-width: 100%; display: block;", class: "pb-5" %>
+    <div class="text-right">
+      <p>contact: <a href="mailto:hello@jenniferboyd.studio">hello@jenniferart.studio</a></p>
+      <p><a href="<%= resume_url %>">cv</a></p>
+      <p><a href="<%= artist_statement_url %>">artist statement</a></p>
+      <a href="https://www.instagram.com/jenniferboyd.studio/" target="_blank"><img src="instagram.png" style="width:24px;"></a>
+    </div>
   </div>
 </div>
 
