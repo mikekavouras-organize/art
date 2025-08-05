@@ -8,7 +8,7 @@ Rails.application.routes.draw do root to: "welcome#index"
   namespace :admin do
     root to: "welcome#index"
     namespace :welcome do
-      post :update_category_positions, to: "update_category_positions", as: "update_category_positions"
+      post :update_category_positions, to: "welcome#update_category_positions", as: "update_category_positions"
     end
     resources :resumes
     resources :sessions, only: [:new, :create]

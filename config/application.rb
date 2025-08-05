@@ -11,7 +11,7 @@ Bundler.require(*Rails.groups)
 module Art
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
-    config.active_record.legacy_connection_handling = false
+    # config.active_record.legacy_connection_handling = false
     config.load_defaults 7.0
 
     # Settings in config/environments/* take precedence over those specified here.
