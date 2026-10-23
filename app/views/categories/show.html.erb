@@ -24,7 +24,7 @@
       <div class="js-asset-container piece-asset-container">
         <% if asset.video? %>
           <video controls poster="<%= asset.preview_url %>" class="height-full js-asset">
-            <source src="<%= rails_blob_path(asset) %>" type="<%= asset.content_type %>">
+            <source src="<%= rails_blob_path(asset) %>" type="<%= video_source_type(asset.content_type) %>">
           </video>
         <% else %>
           <%= image_tag rails_blob_path(asset), class: "height-full js-asset image" %>
@@ -53,7 +53,7 @@
       <div class="mobile-asset">
         <% if asset.video? %>
           <video controls poster="<%= asset.preview_url %>">
-            <source src="<%= rails_blob_path(asset) %>" type="<%= asset.content_type %>">
+            <source src="<%= rails_blob_path(asset) %>" type="<%= video_source_type(asset.content_type) %>">
           </video>
         <% else %>
           <%= image_tag rails_blob_path(asset) %>
