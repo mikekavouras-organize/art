@@ -34,6 +34,11 @@ Rails.application.configure do
   # Store uploaded files on the local file system in a temporary directory.
   config.active_storage.service = :test
 
+  # Don't run jobs on background threads during tests. With the default :async
+  # adapter, Active Storage's AnalyzeJob shares the transactional-test DB
+  # connection with the test thread and intermittently deadlocks the suite.
+  config.active_job.queue_adapter = :test
+
   config.action_mailer.perform_caching = false
 
   # Tell Action Mailer not to deliver emails to the real world.
