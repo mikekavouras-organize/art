@@ -26,9 +26,16 @@ cloudflare:
   endpoint: https://<%= ENV['R2_ACCOUNT_ID'] %>.r2.cloudflarestorage.com
   region: auto
   bucket: <%= ENV['R2_BUCKET_NAME'] %>
+  # aws-sdk-s3 >= 1.178 sends CRC32 checksums on every request by default,
+  # which R2 doesn't fully support. Only checksum when the API requires it.
+  request_checksum_calculation: when_required
+  response_checksum_validation: when_required
 
-# Transitional S3 <-> R2 mirror. Every upload/delete goes to both buckets;
-# reads/URLs come from the primary. Flip with STORAGE_MIRROR_PRIMARY
+# Transitional S3 <-> R2 mirror (Rails 7.1 semantics):
+# - uploads go to the primary synchronously, then ActiveStorage::MirrorJob
+#   (Sidekiq, `default` queue) copies them to the mirror
+# - deletes go to both
+# - reads/URLs come from the primary Flip with STORAGE_MIRROR_PRIMARY
 # (amazon | cloudflare) — no deploy needed, just a config:set + restart.
 <% mirror_primary = ENV.fetch('STORAGE_MIRROR_PRIMARY', 'amazon') %>
 mirror:
