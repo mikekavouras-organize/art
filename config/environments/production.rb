@@ -39,9 +39,13 @@ Rails.application.configure do
   # config.action_dispatch.x_sendfile_header = 'X-Sendfile' # for Apache
   # config.action_dispatch.x_sendfile_header = 'X-Accel-Redirect' # for NGINX
 
-  # Store uploaded files on the local file system (see config/storage.yml for options).
-  # amazon (default) -> mirror (during S3->R2 migration) -> cloudflare
-  config.active_storage.service = ENV.fetch('ACTIVE_STORAGE_SERVICE', 'amazon').to_sym
+  # Store uploaded files in Cloudflare R2 (see config/storage.yml).
+  config.active_storage.service = :cloudflare
+
+  # Fail fast at boot rather than on the first upload/download.
+  %w[R2_ACCESS_KEY_ID R2_SECRET_ACCESS_KEY R2_ACCOUNT_ID R2_BUCKET_NAME].each do |var|
+    raise "Missing #{var} (required for Active Storage on R2)" if ENV[var].blank?
+  end
 
   # Mount Action Cable outside main process or domain.
   # config.action_cable.mount_path = nil
