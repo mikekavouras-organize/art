@@ -7,17 +7,8 @@ local:
   service: Disk
   root: <%= Rails.root.join("storage") %>
 
-amazon:
-  service: S3
-  access_key_id: <%= ENV.fetch('AWS_ACCESS_KEY_ID') %>
-  secret_access_key: <%= ENV.fetch('AWS_SECRET_ACCESS_KEY') %>
-  region: <%= ENV.fetch('AWS_REGION') %>
-  bucket: <%= ENV.fetch('S3_BUCKET_NAME') %>
-  upload:
-    acl: "public-read"
-
-# Cloudflare R2 via its S3-compatible API.
-# R2 doesn't support object ACLs, so no `upload: acl` here — objects are
+# Cloudflare R2 via its S3-compatible API (production).
+# R2 doesn't support object ACLs, so there's no `upload: acl` here: objects are
 # private and served via Active Storage's signed redirect URLs.
 cloudflare:
   service: S3
@@ -30,16 +21,3 @@ cloudflare:
   # which R2 doesn't fully support. Only checksum when the API requires it.
   request_checksum_calculation: when_required
   response_checksum_validation: when_required
-
-# Transitional S3 <-> R2 mirror (Rails 7.1 semantics):
-# - uploads go to the primary synchronously, then ActiveStorage::MirrorJob
-#   (Sidekiq, `default` queue) copies them to the mirror
-# - deletes go to both
-# - reads/URLs come from the primary Flip with STORAGE_MIRROR_PRIMARY
-# (amazon | cloudflare) — no deploy needed, just a config:set + restart.
-<% mirror_primary = ENV.fetch('STORAGE_MIRROR_PRIMARY', 'amazon') %>
-mirror:
-  service: Mirror
-  primary: <%= mirror_primary %>
-  mirrors:
-    - <%= mirror_primary == 'amazon' ? 'cloudflare' : 'amazon' %>

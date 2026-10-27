@@ -34,8 +34,8 @@ Rails.application.configure do
   end
 
   # Store uploaded files on the local file system (see config/storage.yml for options).
-  # Defaults to local disk; set ACTIVE_STORAGE_SERVICE (e.g. mirror, cloudflare)
-  # in .env to exercise real storage backends locally.
+  # Defaults to local disk; set ACTIVE_STORAGE_SERVICE=cloudflare (plus the R2_*
+  # vars, see .env.example) to use the real R2 bucket locally.
   config.active_storage.service = ENV.fetch('ACTIVE_STORAGE_SERVICE', 'local').to_sym
 
   # Don't care if the mailer can't send.

@@ -36,12 +36,6 @@ jobs:
 
     env:
       RAILS_ENV: test
-      # Tests use the Disk storage service; storage.yml only needs these to be
-      # present (it ENV.fetch-es them), so no real credentials are required.
-      AWS_ACCESS_KEY_ID: test
-      AWS_SECRET_ACCESS_KEY: test
-      AWS_REGION: us-east-1
-      S3_BUCKET_NAME: test
 
     steps:
       - uses: actions/checkout@v4
